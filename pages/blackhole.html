@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StarZ - หลุมดำ</title>
+
+<style>
+*{box-sizing:border-box}
+html,body{height:100%}
+
+body{
+margin:0;
+font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;
+color:#e8ecff;
+background:
+radial-gradient(1200px 800px at 80% -10%, #1a1f5a 0%, transparent 60%),
+radial-gradient(1000px 700px at -10% 110%, #0a3b2f 0%, transparent 60%),
+#050814;
+overflow:hidden;
+}
+
+body::after{
+content:"";
+position:fixed;
+inset:0;
+background:url("https://www.transparenttextures.com/patterns/stardust.png");
+opacity:.35;
+pointer-events:none;
+z-index:0;
+}
+
+/* navbar */
+.top-right{
+position:absolute;
+top:18px;
+right:24px;
+display:flex;
+gap:10px;
+z-index:10;
+}
+
+.nav-top{
+text-decoration:none;
+color:#fff;
+padding:10px 18px;
+border-radius:14px;
+border:1px solid rgba(255,255,255,.12);
+background:linear-gradient(
+180deg,
+rgba(255,255,255,.08),
+rgba(255,255,255,.02)
+);
+font-size:15px;
+font-weight:600;
+display:flex;
+align-items:center;
+justify-content:center;
+min-width:95px;
+height:46px;
+transition:.2s;
+}
+
+.nav-top:hover{
+transform:translateY(-2px);
+}
+
+.nav-top.active{
+background:#5e72eb;
+}
+
+/* content */
+.wrap{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:24px;
+}
+
+.progress{
+position:absolute;
+top:22px;
+left:24px;
+opacity:.75;
+font-size:15px;
+}
+
+.image-box{
+height:280px;
+display:flex;
+align-items:center;
+justify-content:center;
+margin-bottom:18px;
+}
+
+.image-box img{
+max-height:100%;
+max-width:100%;
+animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
+100%{transform:translateY(0)}
+}
+
+h1{
+font-size:32px;
+margin:0 0 12px;
+}
+
+p{
+font-size:16px;
+line-height:1.7;
+opacity:.95;
+max-width:760px;
+margin:auto;
+}
+
+.nav{
+margin-top:20px;
+display:flex;
+gap:12px;
+}
+
+.nav button{
+padding:12px 18px;
+border:none;
+border-radius:14px;
+cursor:pointer;
+color:#fff;
+background:#5e72eb;
+font-size:16px;
+transition:.2s;
+}
+
+.nav button:hover{
+transform:translateY(-2px);
+}
+
+@media(max-width:768px){
+h1{font-size:28px}
+p{font-size:16px}
+.image-box{height:200px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="progress" id="progress">1 / 4</div>
+
+<div class="top-right">
+<a href="../course.html" class="nav-top active">Course</a>
+<a href="../quiz.html" class="nav-top">Quiz</a>
+</div>
+
+<section class="wrap">
+
+<div class="card" id="card">
+
+<div class="image-box">
+<img id="img" src="assets/space1.png">
+</div>
+
+<h1 id="title">หลุมดำคืออะไร</h1>
+
+<p id="desc">
+หลุมดำ คือ วัตถุท้องฟ้าที่มีแรงโน้มถ่วงสูงมากจนแม้แต่แสงก็ไม่สามารถหลุดออกมาได้ จึงไม่สามารถมองเห็นโดยตรงด้วยตาเปล่า นักวิทยาศาสตร์ศึกษาหลุมดำจากผลกระทบที่มีต่อดาว ก๊าซ และวัตถุรอบข้าง
+</p>
+
+</div>
+
+<div class="nav">
+<button onclick="prevSlide()">⬅️ ก่อนหน้า</button>
+<button onclick="nextSlide()">ถัดไป ➡️</button>
+</div>
+
+</section>
+
+<script>
+const slides = [
+{
+title:"หลุมดำคืออะไร",
+img:"assets/blackhole1.png",
+desc:"หลุมดำ คือ วัตถุท้องฟ้าที่มีแรงโน้มถ่วงสูงมากจนแม้แต่แสงก็ไม่สามารถหลุดออกมาได้ จึงไม่สามารถมองเห็นโดยตรงด้วยตาเปล่า นักวิทยาศาสตร์ศึกษาหลุมดำจากผลกระทบที่มีต่อดาว ก๊าซ และวัตถุรอบข้าง"
+},
+{
+title:"การเกิดหลุมดำ",
+img:"assets/blackhole2.png",
+desc:"หลุมดำส่วนใหญ่เกิดจากดาวฤกษ์มวลมากเมื่อสิ้นอายุขัย หลังจากเกิดการระเบิดซูเปอร์โนวา แกนกลางของดาวจะยุบตัวลงอย่างรุนแรง หากมวลมากพอจะกลายเป็นหลุมดำ"
+},
+{
+title:"แรงโน้มถ่วงของหลุมดำ",
+img:"assets/blackhole3.png",
+desc:"หลุมดำมีแรงโน้มถ่วงสูงมาก เพราะมวลจำนวนมากถูกรวมอยู่ในพื้นที่ขนาดเล็ก วัตถุที่เข้าใกล้มากเกินไปจะถูกดึงดูดอย่างรุนแรง และอาจไม่สามารถหลุดออกมาได้"
+},
+{
+title:"ขอบฟ้าเหตุการณ์",
+img:"assets/blackhole4.png",
+desc:"บริเวณรอบหลุมดำที่เมื่อผ่านเข้าไปแล้วจะไม่สามารถกลับออกมาได้ เรียกว่า ขอบฟ้าเหตุการณ์ หรือ Event Horizon เป็นเส้นแบ่งสำคัญระหว่างพื้นที่ภายนอกกับบริเวณที่แสงหนีไม่พ้น"
+},
+{
+title:"จานพอกพูนมวล",
+img:"assets/blackhole5.png",
+desc:"ก๊าซและฝุ่นที่โคจรรอบหลุมดำจะถูกดึงดูดให้หมุนวนด้วยความเร็วสูง เกิดเป็นจานร้อนสว่างรอบหลุมดำ เรียกว่า จานพอกพูนมวล ซึ่งปล่อยพลังงานรุนแรงออกมา"
+},
+{
+title:"ประเภทของหลุมดำ",
+img:"assets/blackhole6.png",
+desc:"หลุมดำแบ่งได้หลายประเภท เช่น หลุมดำมวลดาวฤกษ์ที่เกิดจากดาวมวลมาก และหลุมดำมวลยิ่งยวดที่อยู่ใจกลางกาแล็กซีหลายแห่ง รวมถึงกาแล็กซีทางช้างเผือกของเรา"
+},
+{
+title:"หลุมดำใจกลางทางช้างเผือก",
+img:"assets/blackhole7.png",
+desc:"นักดาราศาสตร์พบว่าบริเวณใจกลางกาแล็กซีทางช้างเผือกมีหลุมดำมวลยิ่งยวดชื่อ Sagittarius A* มีมวลมากกว่าดวงอาทิตย์หลายล้านเท่า และมีบทบาทต่อการเคลื่อนที่ของดาวบริเวณศูนย์กลางกาแล็กซี"
+},
+{
+title:"การค้นพบหลุมดำ",
+img:"assets/blackhole8.png",
+desc:"แม้มองไม่เห็นหลุมดำโดยตรง แต่นักวิทยาศาสตร์ตรวจพบจากการโคจรของดาวรอบ ๆ การแผ่รังสีจากจานพอกพูนมวล และคลื่นความโน้มถ่วงจากการรวมตัวของหลุมดำ"
+},
+{
+title:"ภาพหลุมดำภาพแรก",
+img:"assets/blackhole9.png",
+desc:"ในปี ค.ศ. 2019 โครงการ Event Horizon Telescope เผยภาพเงาของหลุมดำเป็นครั้งแรก จากหลุมดำใจกลางกาแล็กซี M87 ถือเป็นก้าวสำคัญของดาราศาสตร์สมัยใหม่"
+},
+{
+title:"ความสำคัญของการศึกษาหลุมดำ",
+img:"assets/blackhole10.png",
+desc:"การศึกษาหลุมดำช่วยให้มนุษย์เข้าใจแรงโน้มถ่วงขั้นรุนแรง โครงสร้างของกาลอวกาศ การกำเนิดกาแล็กซี และทฤษฎีฟิสิกส์พื้นฐานของเอกภพ"
+}
+];
+
+let index = 0;
+
+function render(){
+document.getElementById("title").innerText = slides[index].title;
+document.getElementById("desc").innerText = slides[index].desc;
+document.getElementById("img").src = slides[index].img;
+document.getElementById("progress").innerText = (index+1) + " / " + slides.length;
+
+const nextBtn = document.querySelectorAll(".nav button")[1];
+
+if(index === slides.length - 1){
+nextBtn.innerText = "กลับหน้า Course";
+}else{
+nextBtn.innerText = "ถัดไป ➡️";
+}
+}
+
+function nextSlide(){
+if(index < slides.length - 1){
+index++;
+render();
+}else{
+window.location.href = "../course.html";
+}
+}
+
+function prevSlide(){
+if(index > 0){
+index--;
+render();
+}
+}
+
+render();
+</script>
+
+</body>
+</html>

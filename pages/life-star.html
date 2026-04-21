@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StarZ - วงจรชีวิตดาวฤกษ์</title>
+
+<style>
+*{box-sizing:border-box}
+html,body{height:100%}
+
+body{
+margin:0;
+font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;
+color:#e8ecff;
+background:
+radial-gradient(1200px 800px at 80% -10%, #1a1f5a 0%, transparent 60%),
+radial-gradient(1000px 700px at -10% 110%, #0a3b2f 0%, transparent 60%),
+#050814;
+overflow:hidden;
+}
+
+body::after{
+content:"";
+position:fixed;
+inset:0;
+background:url("https://www.transparenttextures.com/patterns/stardust.png");
+opacity:.35;
+pointer-events:none;
+z-index:0;
+}
+
+/* navbar */
+.top-right{
+position:absolute;
+top:18px;
+right:24px;
+display:flex;
+gap:10px;
+z-index:10;
+}
+
+.nav-top{
+text-decoration:none;
+color:#fff;
+padding:10px 18px;
+border-radius:14px;
+border:1px solid rgba(255,255,255,.12);
+background:linear-gradient(
+180deg,
+rgba(255,255,255,.08),
+rgba(255,255,255,.02)
+);
+font-size:15px;
+font-weight:600;
+display:flex;
+align-items:center;
+justify-content:center;
+min-width:95px;
+height:46px;
+transition:.2s;
+}
+
+.nav-top:hover{
+transform:translateY(-2px);
+}
+
+.nav-top.active{
+background:#5e72eb;
+}
+
+/* content */
+.wrap{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:24px;
+}
+
+.progress{
+position:absolute;
+top:22px;
+left:24px;
+opacity:.75;
+font-size:15px;
+}
+
+.image-box{
+height:280px;
+display:flex;
+align-items:center;
+justify-content:center;
+margin-bottom:18px;
+}
+
+.image-box img{
+max-height:100%;
+max-width:100%;
+animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
+100%{transform:translateY(0)}
+}
+
+h1{
+font-size:32px;
+margin:0 0 12px;
+}
+
+p{
+font-size:16px;
+line-height:1.7;
+opacity:.95;
+max-width:760px;
+margin:auto;
+}
+
+.nav{
+margin-top:20px;
+display:flex;
+gap:12px;
+}
+
+.nav button{
+padding:12px 18px;
+border:none;
+border-radius:14px;
+cursor:pointer;
+color:#fff;
+background:#5e72eb;
+font-size:16px;
+transition:.2s;
+}
+
+.nav button:hover{
+transform:translateY(-2px);
+}
+
+@media(max-width:768px){
+h1{font-size:28px}
+p{font-size:16px}
+.image-box{height:200px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="progress" id="progress">1 / 4</div>
+
+<div class="top-right">
+<a href="../course.html" class="nav-top active">Course</a>
+<a href="../quiz.html" class="nav-top">Quiz</a>
+</div>
+
+<section class="wrap">
+
+<div class="card" id="card">
+
+<div class="image-box">
+<img id="img" src="assets/space1.png">
+</div>
+
+<h1 id="title">วงจรชีวิตดาวฤกษ์คืออะไร</h1>
+
+<p id="desc">
+ดาวฤกษ์ทุกดวงมีการเกิด เปลี่ยนแปลง และสิ้นสุดลงเหมือนสิ่งต่าง ๆ ในธรรมชาติ ช่วงชีวิตของดาวฤกษ์เรียกว่า วงจรชีวิตดาวฤกษ์ ซึ่งระยะเวลาและจุดจบของดาวแต่ละดวงแตกต่างกันตามมวลตั้งต้น ดาวมวลมากจะใช้พลังงานเร็วและมีอายุสั้น ส่วนดาวมวลน้อยจะมีอายุยาวนานกว่า
+</p>
+
+</div>
+
+<div class="nav">
+<button onclick="prevSlide()">⬅️ ก่อนหน้า</button>
+<button onclick="nextSlide()">ถัดไป ➡️</button>
+</div>
+
+</section>
+
+<script>
+const slides = [
+{
+title:"วงจรชีวิตดาวฤกษ์คืออะไร",
+img:"assets/life1.png",
+desc:"ดาวฤกษ์ทุกดวงมีการเกิด เปลี่ยนแปลง และสิ้นสุดลงเหมือนสิ่งต่าง ๆ ในธรรมชาติ ช่วงชีวิตของดาวฤกษ์เรียกว่า วงจรชีวิตดาวฤกษ์ ซึ่งระยะเวลาและจุดจบของดาวแต่ละดวงแตกต่างกันตามมวลตั้งต้น ดาวมวลมากจะใช้พลังงานเร็วและมีอายุสั้น ส่วนดาวมวลน้อยจะมีอายุยาวนานกว่า"
+},
+{
+title:"ระยะเริ่มต้น เนบิวลา",
+img:"assets/life2.png",
+desc:"จุดเริ่มต้นของดาวฤกษ์คือเนบิวลา ซึ่งเป็นกลุ่มก๊าซและฝุ่นขนาดใหญ่ในอวกาศ เมื่อสสารภายในเนบิวลาถูกรบกวนหรือรวมตัวกันด้วยแรงโน้มถ่วง จะเริ่มยุบตัวเข้าสู่ศูนย์กลางและกลายเป็นต้นกำเนิดของดาวดวงใหม่"
+},
+{
+title:"โปรโตสตาร์",
+img:"assets/life3.png",
+desc:"เมื่อก๊าซและฝุ่นยุบตัวมากขึ้น จะเกิดเป็นโปรโตสตาร์ หรือดาวก่อนกำเนิด อุณหภูมิภายในเพิ่มสูงขึ้นอย่างต่อเนื่อง แต่ยังไม่เกิดปฏิกิริยานิวเคลียร์เต็มรูปแบบ ระยะนี้ดาวยังคงสะสมมวลจากสสารรอบตัว"
+},
+{
+title:"ดาวฤกษ์ลำดับหลัก",
+img:"assets/life4.png",
+desc:"เมื่อแกนกลางร้อนและหนาแน่นมากพอ ไฮโดรเจนจะหลอมรวมเป็นฮีเลียม เกิดพลังงานมหาศาล ดาวจะเข้าสู่ระยะดาวฤกษ์ลำดับหลัก ซึ่งเป็นช่วงที่เสถียรที่สุดและยาวนานที่สุด ดวงอาทิตย์ของเราอยู่ในระยะนี้"
+},
+{
+title:"เส้นทางของดาวมวลน้อย",
+img:"assets/life5.png",
+desc:"ดาวที่มีมวลใกล้เคียงดวงอาทิตย์ เมื่อเชื้อเพลิงไฮโดรเจนเริ่มหมด แกนกลางจะยุบตัว แต่ชั้นนอกขยายใหญ่ กลายเป็นดาวยักษ์แดง หลังจากนั้นชั้นนอกจะหลุดออกไปเป็นเนบิวลาดาวเคราะห์ เหลือแกนกลางร้อนขนาดเล็กเรียกว่า ดาวแคระขาว"
+},
+{
+title:"ดาวแคระขาว",
+img:"assets/life6.png",
+desc:"ดาวแคระขาวเป็นซากดาวฤกษ์ที่มีขนาดเล็ก แต่หนาแน่นสูงมาก ไม่มีการสร้างพลังงานใหม่แล้ว จะค่อย ๆ เย็นลงเป็นเวลานานมาก หากเวลาผ่านไปนานมากอาจกลายเป็นดาวแคระดำ"
+},
+{
+title:"เส้นทางของดาวมวลมาก",
+img:"assets/life7.png",
+desc:"ดาวฤกษ์ที่มีมวลมากกว่าดวงอาทิตย์หลายเท่า จะใช้เชื้อเพลิงเร็วกว่าและมีอายุสั้นกว่า เมื่อใกล้หมดเชื้อเพลิงจะขยายตัวเป็นดาวมหายักษ์แดง และเกิดการสร้างธาตุหนักภายในแกนกลาง"
+},
+{
+title:"การระเบิดซูเปอร์โนวา",
+img:"assets/life8.png",
+desc:"เมื่อแกนกลางของดาวมวลมากไม่สามารถต้านแรงโน้มถ่วงได้ ดาวจะยุบตัวอย่างรวดเร็วและระเบิดอย่างรุนแรง เรียกว่า ซูเปอร์โนวา การระเบิดนี้ปล่อยพลังงานมหาศาลและกระจายธาตุต่าง ๆ ออกสู่อวกาศ"
+},
+{
+title:"ดาวนิวตรอนและหลุมดำ",
+img:"assets/life9.png",
+desc:"หลังการระเบิดซูเปอร์โนวา หากแกนกลางที่เหลือมีมวลปานกลาง จะกลายเป็นดาวนิวตรอน แต่ถ้ามีมวลสูงมาก แรงโน้มถ่วงจะยุบตัวต่อเนื่องจนกลายเป็นหลุมดำ ซึ่งแม้แต่แสงก็ไม่สามารถหนีออกมาได้"
+},
+{
+title:"ความสำคัญของวงจรชีวิตดาวฤกษ์",
+img:"assets/life10.png",
+desc:"การศึกษาวงจรชีวิตดาวฤกษ์ช่วยให้มนุษย์เข้าใจการกำเนิดธาตุต่าง ๆ ในเอกภพ เพราะธาตุหลายชนิด เช่น คาร์บอน ออกซิเจน เหล็ก เกิดขึ้นภายในดาวฤกษ์และกระจายออกมาเมื่อดาวสิ้นอายุขัย สิ่งมีชีวิตบนโลกจึงมีต้นกำเนิดเชื่อมโยงกับดาวฤกษ์"
+}
+];
+
+let index = 0;
+
+function render(){
+document.getElementById("title").innerText = slides[index].title;
+document.getElementById("desc").innerText = slides[index].desc;
+document.getElementById("img").src = slides[index].img;
+document.getElementById("progress").innerText = (index+1) + " / " + slides.length;
+
+const nextBtn = document.querySelectorAll(".nav button")[1];
+
+if(index === slides.length - 1){
+nextBtn.innerText = "กลับหน้า Course";
+}else{
+nextBtn.innerText = "ถัดไป ➡️";
+}
+}
+
+function nextSlide(){
+if(index < slides.length - 1){
+index++;
+render();
+}else{
+window.location.href = "../course.html";
+}
+}
+
+function prevSlide(){
+if(index > 0){
+index--;
+render();
+}
+}
+
+render();
+</script>
+
+</body>
+</html>

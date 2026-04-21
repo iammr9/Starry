@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StarZ Quiz</title>
+
+<style>
+*{box-sizing:border-box}
+html,body{height:100%}
+
+body{
+margin:0;
+font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;
+color:#e8ecff;
+background:
+radial-gradient(1200px 800px at 80% -10%, #1a1f5a 0%, transparent 60%),
+radial-gradient(1000px 700px at -10% 110%, #0a3b2f 0%, transparent 60%),
+#050814;
+overflow:hidden;
+}
+
+body::after{
+content:"";
+position:fixed;
+inset:0;
+background:url("https://www.transparenttextures.com/patterns/stardust.png");
+opacity:.35;
+pointer-events:none;
+z-index:0;
+}
+
+/* ---------- Navbar ---------- */
+.top-right{
+position:absolute;
+top:18px;
+right:24px;
+display:flex;
+gap:10px;
+z-index:10;
+}
+
+.nav-top{
+text-decoration:none;
+color:#fff;
+padding:10px 18px;
+border-radius:14px;
+border:1px solid rgba(255,255,255,.12);
+background:linear-gradient(
+180deg,
+rgba(255,255,255,.08),
+rgba(255,255,255,.02)
+);
+font-size:15px;
+font-weight:600;
+display:flex;
+align-items:center;
+justify-content:center;
+min-width:95px;
+height:46px;
+transition:.2s;
+}
+
+.nav-top:hover{
+transform:translateY(-2px);
+border-color:rgba(255,255,255,.22);
+}
+
+.nav-top.active{
+background:#5e72eb;
+}
+
+/* ---------- Main ---------- */
+.wrap{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:24px;
+gap:16px;
+}
+
+.logo{
+font-size:42px;
+margin:0;
+}
+
+.subtitle{
+opacity:.8;
+margin-bottom:10px;
+}
+
+.quiz-card{
+width:min(700px,95%);
+padding:28px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,.12);
+background:rgba(255,255,255,.05);
+text-align:center;
+}
+
+.question{
+font-size:24px;
+margin-bottom:20px;
+}
+
+.answers{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
+}
+
+.answers button{
+padding:14px;
+border:none;
+border-radius:14px;
+cursor:pointer;
+font-size:16px;
+color:#fff;
+background:linear-gradient(
+180deg,
+rgba(255,255,255,.08),
+rgba(255,255,255,.02)
+);
+border:1px solid rgba(255,255,255,.12);
+transition:.2s;
+}
+
+.answers button:hover{
+transform:translateY(-2px);
+}
+
+.result{
+margin-top:18px;
+font-size:18px;
+font-weight:600;
+min-height:28px;
+}
+
+@media(max-width:768px){
+.answers{
+grid-template-columns:1fr;
+}
+.logo{
+font-size:32px;
+}
+.question{
+font-size:20px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div class="top-right">
+<a href="course.html" class="nav-top">Course</a>
+<a href="quiz.html" class="nav-top active">Quiz</a>
+</div>
+
+<!-- Main -->
+<section class="wrap">
+
+<h1 class="logo">📝 StarZ Quiz</h1>
+<p class="subtitle">ทดสอบความรู้ด้านดาราศาสตร์</p>
+
+<div class="quiz-card">
+
+<div class="question">
+ดาวเคราะห์ดวงใดอยู่ใกล้ดวงอาทิตย์มากที่สุด?
+</div>
+
+<div class="answers">
+<button onclick="checkAnswer(false)">โลก</button>
+<button onclick="checkAnswer(true)">ดาวพุธ</button>
+<button onclick="checkAnswer(false)">ดาวอังคาร</button>
+<button onclick="checkAnswer(false)">ดาวศุกร์</button>
+</div>
+
+<div class="result" id="result"></div>
+
+</div>
+
+</section>
+
+<script>
+function checkAnswer(correct){
+const result = document.getElementById("result");
+
+if(correct){
+result.innerHTML = "✅ ถูกต้อง! ดาวพุธอยู่ใกล้ดวงอาทิตย์ที่สุด";
+result.style.color = "#8cffb0";
+}else{
+result.innerHTML = "❌ ยังไม่ถูก ลองใหม่อีกครั้ง";
+result.style.color = "#ff9b9b";
+}
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StarZ Course</title>
+
+<style>
+*{box-sizing:border-box}
+html,body{height:100%}
+
+body{
+margin:0;
+font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;
+color:#e8ecff;
+background:
+radial-gradient(1200px 800px at 80% -10%, #1a1f5a 0%, transparent 60%),
+radial-gradient(1000px 700px at -10% 110%, #0a3b2f 0%, transparent 60%),
+#050814;
+overflow:hidden;
+}
+
+body::after{
+content:"";
+position:fixed;
+inset:0;
+background:url("https://www.transparenttextures.com/patterns/stardust.png");
+opacity:.35;
+pointer-events:none;
+z-index:0;
+}
+
+.view{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:24px;
+gap:16px;
+position:relative;
+}
+
+.logo{font-size:40px}
+.subtitle{opacity:.8}
+
+.menu-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px;
+width:min(900px,95%);
+z-index:1;
+}
+
+.menu-btn{
+min-height:75px;
+padding:16px;
+border-radius:16px;
+border:1px solid rgba(255,255,255,.12);
+background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+color:#fff;
+cursor:pointer;
+font-size:18px;
+transition:.2s;
+text-decoration:none;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.menu-btn:hover{
+transform:translateY(-3px) scale(1.02);
+}
+
+.top-right{
+position:absolute;
+top:18px;
+right:24px;
+display:flex;
+gap:10px;
+z-index:10;
+}
+
+.nav-top{
+text-decoration:none;
+color:#fff;
+padding:10px 18px;
+border-radius:14px;
+border:1px solid rgba(255,255,255,.12);
+background:linear-gradient(
+180deg,
+rgba(255,255,255,.08),
+rgba(255,255,255,.02)
+);
+font-size:15px;
+font-weight:600;
+display:flex;
+align-items:center;
+justify-content:center;
+min-width:95px;
+height:46px;
+transition:.2s;
+}
+
+.nav-top:hover{
+transform:translateY(-2px);
+border-color:rgba(255,255,255,.22);
+}
+
+.nav-top.active{
+background:#5e72eb;
+}
+
+.footer{
+position:absolute;
+bottom:16px;
+opacity:.5;
+font-size:12px;
+}
+
+@media(max-width:768px){
+.menu-grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-right">
+<a href="course.html" class="nav-top active">Course</a>
+<a href="quiz.html" class="nav-top">Quiz</a>
+</div>
+
+<section class="view">
+
+<h1 class="logo">✨ StarZ ✨</h1>
+<p class="subtitle">เลือกหัวข้อเพื่อเริ่มเรียนรู้</p>
+
+<div class="menu-grid">
+
+<a href="pages/space.html" class="menu-btn">อวกาศ</a>
+<a href="pages/universe.html" class="menu-btn">เอกภพ</a>
+<a href="pages/theory.html" class="menu-btn">ทฤษฎีการกำเนิดเอกภพ</a>
+
+<a href="pages/galaxy.html" class="menu-btn">กาแล็กซี</a>
+<a href="pages/solar.html" class="menu-btn">ระบบสุริยะ</a>
+<a href="pages/planet.html" class="menu-btn">ดาวเคราะห์</a>
+
+<a href="pages/nebular.html" class="menu-btn">เนบิวลา</a>
+<a href="pages/star.html" class="menu-btn">ดาวฤกษ์</a>
+<a href="pages/life-star.html" class="menu-btn">วงจรชีวิตดาวฤกษ์</a>
+
+<a href="pages/blackhole.html" class="menu-btn">หลุมดำ</a>
+<a href="pages/tech.html" class="menu-btn">เทคโนโลยีอวกาศ</a>
+<a href="pages/astronaut.html" class="menu-btn">นักบินอวกาศ</a>
+
+</div>
+
+<footer class="footer">Made for school project • HTML/CSS/JS</footer>
+
+</section>
+
+</body>
+</html>

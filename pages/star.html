@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StarZ - ดาวฤกษ์</title>
+
+<style>
+*{box-sizing:border-box}
+html,body{height:100%}
+
+body{
+margin:0;
+font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;
+color:#e8ecff;
+background:
+radial-gradient(1200px 800px at 80% -10%, #1a1f5a 0%, transparent 60%),
+radial-gradient(1000px 700px at -10% 110%, #0a3b2f 0%, transparent 60%),
+#050814;
+overflow:hidden;
+}
+
+body::after{
+content:"";
+position:fixed;
+inset:0;
+background:url("https://www.transparenttextures.com/patterns/stardust.png");
+opacity:.35;
+pointer-events:none;
+z-index:0;
+}
+
+/* navbar */
+.top-right{
+position:absolute;
+top:18px;
+right:24px;
+display:flex;
+gap:10px;
+z-index:10;
+}
+
+.nav-top{
+text-decoration:none;
+color:#fff;
+padding:10px 18px;
+border-radius:14px;
+border:1px solid rgba(255,255,255,.12);
+background:linear-gradient(
+180deg,
+rgba(255,255,255,.08),
+rgba(255,255,255,.02)
+);
+font-size:15px;
+font-weight:600;
+display:flex;
+align-items:center;
+justify-content:center;
+min-width:95px;
+height:46px;
+transition:.2s;
+}
+
+.nav-top:hover{
+transform:translateY(-2px);
+}
+
+.nav-top.active{
+background:#5e72eb;
+}
+
+/* content */
+.wrap{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:24px;
+}
+
+.progress{
+position:absolute;
+top:22px;
+left:24px;
+opacity:.75;
+font-size:15px;
+}
+
+.image-box{
+height:280px;
+display:flex;
+align-items:center;
+justify-content:center;
+margin-bottom:18px;
+}
+
+.image-box img{
+max-height:100%;
+max-width:100%;
+animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
+100%{transform:translateY(0)}
+}
+
+h1{
+font-size:32px;
+margin:0 0 12px;
+}
+
+p{
+font-size:16px;
+line-height:1.7;
+opacity:.95;
+max-width:760px;
+margin:auto;
+}
+
+.nav{
+margin-top:20px;
+display:flex;
+gap:12px;
+}
+
+.nav button{
+padding:12px 18px;
+border:none;
+border-radius:14px;
+cursor:pointer;
+color:#fff;
+background:#5e72eb;
+font-size:16px;
+transition:.2s;
+}
+
+.nav button:hover{
+transform:translateY(-2px);
+}
+
+@media(max-width:768px){
+h1{font-size:28px}
+p{font-size:16px}
+.image-box{height:200px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="progress" id="progress">1 / 4</div>
+
+<div class="top-right">
+<a href="../course.html" class="nav-top active">Course</a>
+<a href="../quiz.html" class="nav-top">Quiz</a>
+</div>
+
+<section class="wrap">
+
+<div class="card" id="card">
+
+<div class="image-box">
+<img id="img" src="assets/space1.png">
+</div>
+
+<h1 id="title">ดาวฤกษ์คืออะไร</h1>
+
+<p id="desc">
+ดาวฤกษ์ คือ วัตถุท้องฟ้าที่สามารถเปล่งแสงและพลังงานได้ด้วยตนเอง พลังงานเกิดจากปฏิกิริยานิวเคลียร์ฟิวชันภายในแกนกลาง ซึ่งเปลี่ยนไฮโดรเจนให้เป็นฮีเลียม ดาวฤกษ์มีขนาด มวล สี และอุณหภูมิแตกต่างกันมาก ดวงอาทิตย์ก็เป็นดาวฤกษ์ดวงหนึ่ง
+</p>
+
+</div>
+
+<div class="nav">
+<button onclick="prevSlide()">⬅️ ก่อนหน้า</button>
+<button onclick="nextSlide()">ถัดไป ➡️</button>
+</div>
+
+</section>
+
+<script>
+const slides = [
+{
+title:"ดาวฤกษ์คืออะไร",
+img:"assets/star1.png",
+desc:"ดาวฤกษ์ คือ วัตถุท้องฟ้าที่สามารถเปล่งแสงและพลังงานได้ด้วยตนเอง พลังงานเกิดจากปฏิกิริยานิวเคลียร์ฟิวชันภายในแกนกลาง ซึ่งเปลี่ยนไฮโดรเจนให้เป็นฮีเลียม ดาวฤกษ์มีขนาด มวล สี และอุณหภูมิแตกต่างกันมาก ดวงอาทิตย์ก็เป็นดาวฤกษ์ดวงหนึ่ง"
+},
+{
+title:"การกำเนิดดาวฤกษ์",
+img:"assets/star2.png",
+desc:"ดาวฤกษ์กำเนิดจากกลุ่มก๊าซและฝุ่นในเนบิวลา เมื่อสสารรวมตัวกันด้วยแรงโน้มถ่วงจะยุบตัวหนาแน่นขึ้น อุณหภูมิภายในเพิ่มสูงขึ้นจนเกิดดาวก่อนกำเนิด หรือโปรโตสตาร์ และเมื่อแกนกลางร้อนพอจะเริ่มปฏิกิริยานิวเคลียร์ กลายเป็นดาวฤกษ์เต็มตัว"
+},
+{
+title:"แหล่งพลังงานของดาวฤกษ์",
+img:"assets/star3.png",
+desc:"ภายในแกนกลางของดาวฤกษ์มีอุณหภูมิและความดันสูงมาก ทำให้นิวเคลียสของไฮโดรเจนรวมตัวกันเป็นฮีเลียม กระบวนการนี้ปล่อยพลังงานจำนวนมากออกมาในรูปแสงและความร้อน พลังงานดังกล่าวเดินทางออกสู่ผิวดาวและแผ่ออกสู่อวกาศ"
+},
+{
+title:"สีและอุณหภูมิของดาวฤกษ์",
+img:"assets/star4.png",
+desc:"สีของดาวฤกษ์สัมพันธ์กับอุณหภูมิผิว ดาวที่ร้อนมากจะมีสีฟ้าหรือน้ำเงิน ดาวที่ร้อนปานกลางอาจมีสีขาวหรือเหลือง ส่วนดาวที่เย็นกว่าจะมีสีส้มหรือแดง ดวงอาทิตย์มีสีเหลืองอมขาวและมีอุณหภูมิผิวประมาณ 5,500 องศาเซลเซียส"
+},
+{
+title:"ความส่องสว่างของดาวฤกษ์",
+img:"assets/star5.png",
+desc:"ความส่องสว่างของดาวฤกษ์ขึ้นอยู่กับขนาดและอุณหภูมิของดาว ดาวที่มีขนาดใหญ่และร้อนมากมักให้พลังงานสูงกว่าดาวขนาดเล็ก การมองเห็นสว่างมากหรือน้อยจากโลกยังขึ้นอยู่กับระยะทางอีกด้วย"
+},
+{
+title:"ขนาดของดาวฤกษ์",
+img:"assets/star6.png",
+desc:"ดาวฤกษ์มีหลายขนาด ตั้งแต่ดาวแคระแดงซึ่งมีขนาดเล็ก ไปจนถึงดาวยักษ์แดงและดาวมหายักษ์ที่มีขนาดใหญ่มาก บางดวงมีเส้นผ่านศูนย์กลางใหญ่กว่าดวงอาทิตย์หลายร้อยเท่า"
+},
+{
+title:"การจัดประเภทดาวฤกษ์",
+img:"assets/star7.png",
+desc:"นักดาราศาสตร์จำแนกดาวฤกษ์ตามสเปกตรัมและอุณหภูมิผิว โดยใช้กลุ่ม O B A F G K M ดาวกลุ่ม O ร้อนที่สุดมีสีน้ำเงิน ส่วนกลุ่ม M เย็นกว่ามีสีแดง ดวงอาทิตย์อยู่ในกลุ่ม G"
+},
+{
+title:"ดวงอาทิตย์ ดาวฤกษ์ใกล้โลกที่สุด",
+img:"assets/star8.png",
+desc:"ดวงอาทิตย์เป็นดาวฤกษ์ที่อยู่ใกล้โลกที่สุด ให้พลังงานแสงและความร้อนที่จำเป็นต่อสิ่งมีชีวิต มีแรงโน้มถ่วงยึดดาวเคราะห์ทั้งหมดไว้ในระบบสุริยะ และเป็นศูนย์กลางของระบบสุริยะ"
+},
+{
+title:"ความสำคัญของการศึกษาดาวฤกษ์",
+img:"assets/star9.png",
+desc:"การศึกษาดาวฤกษ์ช่วยให้เข้าใจการกำเนิดธาตุต่าง ๆ ในเอกภพ การวิวัฒนาการของดาว ระบบดาวเคราะห์ และอนาคตของดวงอาทิตย์ รวมถึงช่วยอธิบายโครงสร้างของกาแล็กซีและจักรวาล"
+}
+];
+
+let index = 0;
+
+function render(){
+document.getElementById("title").innerText = slides[index].title;
+document.getElementById("desc").innerText = slides[index].desc;
+document.getElementById("img").src = slides[index].img;
+document.getElementById("progress").innerText = (index+1) + " / " + slides.length;
+
+const nextBtn = document.querySelectorAll(".nav button")[1];
+
+if(index === slides.length - 1){
+nextBtn.innerText = "กลับหน้า Course";
+}else{
+nextBtn.innerText = "ถัดไป ➡️";
+}
+}
+
+function nextSlide(){
+if(index < slides.length - 1){
+index++;
+render();
+}else{
+window.location.href = "../course.html";
+}
+}
+
+function prevSlide(){
+if(index > 0){
+index--;
+render();
+}
+}
+
+render();
+</script>
+
+</body>
+</html>
