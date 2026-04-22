@@ -1,89 +1,162 @@
-/* *{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Noto Sans",sans-serif;
-  color:#e8ecff;
-  background: radial-gradient(1200px 800px at 80% -10%, #1a1f5a 0%, transparent 60%),
-              radial-gradient(1000px 700px at -10% 110%, #0a3b2f 0%, transparent 60%),
-              #050814;
-  overflow:hidden;
-}
-.view{display:none; height:100%; width:100%; padding:24px}
-.view.active{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px}
-.logo{font-size:40px}
-.subtitle{opacity:.8}
-.menu-grid{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:16px;
-  width:min(900px,95%);
+/* ===============================
+   style.css
+   ใช้ทุกหน้า
+=============================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.menu-btn{
-  min-height:75px;
-  padding:16px;
-  border-radius:16px;
-  border:1px solid rgba(255,255,255,.12);
-  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-  color:#fff;
-  cursor:pointer;
-  font-size:18px;
-  transition:.2s;
+html,
+body {
+  min-height: 100%;
 }
 
-.menu-btn:hover{
-  transform:translateY(-3px) scale(1.02);
-}
-.footer{position:absolute; bottom:16px; opacity:.5; font-size:12px}
+body {
+  margin: 0;
+  position: relative;
+  font-family:
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Ubuntu,
+    sans-serif;
 
-#content{justify-content:space-between; padding:20px}
-.topbar{display:flex; justify-content:space-between; width:100%}
-.ghost{background:transparent; border:1px solid rgba(255,255,255,.2); color:#fff; padding:8px 12px; border-radius:10px}
-.progress{opacity:.8}
-.card{width:min(900px,95%); margin:auto; text-align:center; padding:20px; border-radius:20px;
-  border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.05)}
-.img-wrap{height:260px; display:flex; align-items:center; justify-content:center}
-.img-wrap img{max-height:100%; max-width:100%}
-h2{font-size:32px}
-.nav{display:flex; gap:12px; justify-content:center}
-.nav-btn{padding:12px 18px; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:rgba(255,255,255,.06); color:#fff}
-.nav-btn.primary{background:#6b7cff}
+  color: #e8ecff;
 
-#end{align-items:center; justify-content:center}
-.end-card{text-align:center; padding:24px; border-radius:18px; border:1px solid rgba(255,255,255,.12)}
-.primary{padding:12px 18px; border-radius:12px; border:0; background:#6b7cff; color:#fff}
-.card {
-  transition: all 0.4s ease;
+  background:
+    radial-gradient(1200px 800px at 80% -10%, #1a1f5a 0%, transparent 60%),
+    radial-gradient(1000px 700px at -10% 110%, #0a3b2f 0%, transparent 60%),
+    #050814;
+
+  overflow-x: hidden;
 }
 
-.fade-out {
-  opacity: 0;
-  transform: translateX(-50px);
-}
-
-.fade-in {
-  opacity: 1;
-  transform: translateX(0);
-}
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-
-.img-wrap img {
-  animation: float 3s ease-in-out infinite;
-}
 body::after {
   content: "";
-  position: fixed;
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  inset: 0;
+  min-height: 100%;
   background: url("https://www.transparenttextures.com/patterns/stardust.png");
   opacity: 0.3;
   pointer-events: none;
+  z-index: 0;
 }
-button:active {
-  transform: scale(0.95);
-} */
+
+/* ---------- Brand ---------- */
+
+.brand {
+  position: absolute;
+  top: 18px;
+  left: 24px;
+  z-index: 10;
+  text-decoration: none;
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: 0.2s;
+}
+
+.brand:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* ---------- Top Nav ---------- */
+
+.top-right {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.nav-top {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.02)
+  );
+
+  font-size: 15px;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 95px;
+  height: 46px;
+
+  transition: 0.2s;
+}
+
+.nav-top:hover {
+  transform: translateY(-2px);
+}
+
+.nav-top.active {
+  background: #5e72eb;
+}
+
+/* ---------- Shared Button ---------- */
+
+.btn-primary {
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  background: #5e72eb;
+  border-radius: 14px;
+  transition: 0.2s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+/* ===============================
+   MOBILE
+=============================== */
+
+@media (max-width: 768px) {
+  body {
+    padding: 12px;
+    overflow: auto;
+  }
+
+  .brand {
+    position: static;
+    display: block;
+    width: 100%;
+    font-size: 44px;
+    margin: 0 0 14px;
+    text-align: left;
+  }
+
+  .top-right {
+    position: static;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .nav-top {
+    flex: 1;
+    min-width: 0;
+    height: 42px;
+    font-size: 15px;
+    padding: 8px 12px;
+  }
+}

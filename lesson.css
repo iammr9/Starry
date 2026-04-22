@@ -1,0 +1,143 @@
+/* ==================================
+   lesson.css
+   ใช้กับทุกหน้าเนื้อหา
+   เช่น astronaut / space / star / planet
+================================== */
+
+.wrap {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.progress {
+  position: absolute;
+  top: 22px;
+  left: 24px;
+
+  opacity: 0.75;
+  font-size: 15px;
+  z-index: 10;
+}
+
+.lesson-card {
+  width: 100%;
+  max-width: 860px;
+  text-align: center;
+}
+
+.image-box {
+  height: 280px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 18px;
+}
+
+.image-box img {
+  max-width: 100%;
+  max-height: 100%;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.lesson-card h1 {
+  font-size: 32px;
+  margin: 0 0 12px;
+  text-align: left;
+}
+
+.lesson-card p {
+  font-size: 16px;
+  line-height: 1.7;
+  opacity: 0.95;
+  text-align: left;
+  max-width: 100%;
+  margin: 0;
+}
+
+.nav {
+  margin-top: 20px;
+
+  display: flex;
+  gap: 12px;
+}
+
+.nav button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+
+  background: #5e72eb;
+  color: #fff;
+  font-size: 16px;
+
+  transition: 0.2s;
+}
+
+.nav button:hover {
+  transform: translateY(-2px);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+  .wrap {
+    justify-content: flex-start;
+    padding: 16px;
+    padding-top: 90px;
+  }
+
+  .progress {
+    top: 18px;
+    left: 14px;
+    font-size: 14px;
+  }
+
+  .lesson-card h1 {
+    font-size: 24px;
+  }
+
+  .lesson-card p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .image-box {
+    height: 180px;
+  }
+
+  .nav {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .nav button {
+    width: 100%;
+  }
+}
