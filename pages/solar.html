@@ -1,345 +1,370 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>StarZ - ระบบสุริยะ</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <title>StarZ - ระบบสุริยะ</title>
 
-<style>
-*{box-sizing:border-box}
-html,body{height:100%}
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        min-height: 100%;
+      }
 
-body{
-margin:0;
-font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;
-color:#e8ecff;
-background:
-radial-gradient(1200px 800px at 80% -10%, #1a1f5a 0%, transparent 60%),
-radial-gradient(1000px 700px at -10% 110%, #0a3b2f 0%, transparent 60%),
-#050814;
-overflow:hidden;
-}
+      body {
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Ubuntu,
+          sans-serif;
+        color: #e8ecff;
+        background:
+          radial-gradient(
+            1200px 800px at 80% -10%,
+            #1a1f5a 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            1000px 700px at -10% 110%,
+            #0a3b2f 0%,
+            transparent 60%
+          ),
+          #050814;
+        overflow: hidden;
+      }
 
-body::after{
-content:"";
-position:absolute;
-inset:0;
-min-height:100%;
-background:url("https://www.transparenttextures.com/patterns/stardust.png");
-opacity:.3;
-pointer-events:none;
-z-index:0;
-}
+      body::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        min-height: 100%;
+        background: url("https://www.transparenttextures.com/patterns/stardust.png");
+        opacity: 0.3;
+        pointer-events: none;
+        z-index: 0;
+      }
 
-/* navbar */
-.top-right{
-position:absolute;
-top:18px;
-right:24px;
-display:flex;
-gap:10px;
-z-index:10;
-}
+      /* navbar */
+      .top-right {
+        position: absolute;
+        top: 18px;
+        right: 24px;
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+      }
 
-.nav-top{
-text-decoration:none;
-color:#fff;
-padding:10px 18px;
-border-radius:14px;
-border:1px solid rgba(255,255,255,.12);
-background:linear-gradient(
-180deg,
-rgba(255,255,255,.08),
-rgba(255,255,255,.02)
-);
-font-size:15px;
-font-weight:600;
-display:flex;
-align-items:center;
-justify-content:center;
-min-width:95px;
-height:46px;
-transition:.2s;
-}
+      .nav-top {
+        text-decoration: none;
+        color: #fff;
+        padding: 10px 18px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.08),
+          rgba(255, 255, 255, 0.02)
+        );
+        font-size: 15px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 95px;
+        height: 46px;
+        transition: 0.2s;
+      }
 
-.nav-top:hover{
-transform:translateY(-2px);
-}
+      .nav-top:hover {
+        transform: translateY(-2px);
+      }
 
-.nav-top.active{
-background:#5e72eb;
-}
+      .nav-top.active {
+        background: #5e72eb;
+      }
 
-/* content */
-.wrap{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-padding:24px;
-}
+      /* content */
+      .wrap {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 24px;
+      }
 
-.progress{
-position:absolute;
-top:22px;
-left:24px;
-opacity:.75;
-font-size:15px;
-}
+      .progress {
+        position: absolute;
+        top: 22px;
+        left: 24px;
+        opacity: 0.75;
+        font-size: 15px;
+      }
 
-.image-box{
-height:280px;
-display:flex;
-align-items:center;
-justify-content:center;
-margin-bottom:18px;
-}
+      .image-box {
+        height: 280px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+      }
 
-.image-box img{
-max-height:100%;
-max-width:100%;
-animation:float 3s ease-in-out infinite;
-}
+      .image-box img {
+        max-height: 100%;
+        max-width: 100%;
+        animation: float 3s ease-in-out infinite;
+      }
 
-@keyframes float{
-0%{transform:translateY(0)}
-50%{transform:translateY(-10px)}
-100%{transform:translateY(0)}
-}
+      @keyframes float {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
 
-h1{
-font-size:32px;
-margin:0 0 12px;
-}
+      h1 {
+        font-size: 32px;
+        margin: 0 0 12px;
+      }
 
-p{
-font-size:16px;
-line-height:1.7;
-opacity:.95;
-max-width:760px;
-margin:auto;
-}
+      p {
+        font-size: 16px;
+        line-height: 1.7;
+        opacity: 0.95;
+        max-width: 760px;
+        margin: auto;
+      }
 
-.nav{
-margin-top:20px;
-display:flex;
-gap:12px;
-}
+      .nav {
+        margin-top: 20px;
+        display: flex;
+        gap: 12px;
+      }
 
-.nav button{
-padding:12px 18px;
-border:none;
-border-radius:14px;
-cursor:pointer;
-color:#fff;
-background:#5e72eb;
-font-size:16px;
-transition:.2s;
-}
+      .nav button {
+        padding: 12px 18px;
+        border: none;
+        border-radius: 14px;
+        cursor: pointer;
+        color: #fff;
+        background: #5e72eb;
+        font-size: 16px;
+        transition: 0.2s;
+      }
 
-.nav button:hover{
-transform:translateY(-2px);
-}
+      .nav button:hover {
+        transform: translateY(-2px);
+      }
 
-@media (max-width:768px){
+      @media (max-width: 768px) {
+        body {
+          padding: 14px;
+          overflow: auto;
+        }
 
-body{
-padding:14px;
-overflow:auto;
-}
+        .wrap {
+          padding: 16px;
+          justify-content: flex-start;
+          padding-top: 90px;
+        }
 
-.wrap{
-padding:16px;
-justify-content:flex-start;
-padding-top:90px;
-}
+        .top-right {
+          top: 14px;
+          right: 14px;
+          gap: 8px;
+        }
 
-.top-right{
-top:14px;
-right:14px;
-gap:8px;
-}
+        .nav-top {
+          min-width: 78px;
+          height: 40px;
+          font-size: 14px;
+          padding: 8px 12px;
+        }
 
-.nav-top{
-min-width:78px;
-height:40px;
-font-size:14px;
-padding:8px 12px;
-}
+        .progress {
+          top: 18px;
+          left: 14px;
+          font-size: 14px;
+        }
 
-.progress{
-top:18px;
-left:14px;
-font-size:14px;
-}
+        h1 {
+          font-size: 24px;
+        }
 
-h1{
-font-size:24px;
-}
+        p {
+          font-size: 15px;
+          line-height: 1.6;
+        }
 
-p{
-font-size:15px;
-line-height:1.6;
-}
+        .image-box {
+          height: 180px;
+        }
 
-.image-box{
-height:180px;
-}
+        .nav {
+          width: 100%;
+          flex-direction: column;
+        }
 
-.nav{
-width:100%;
-flex-direction:column;
-}
+        .nav button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
 
-.nav button{
-width:100%;
-}
-}
-</style>
-</head>
+  <body>
+    <div class="progress" id="progress">1 / 4</div>
 
-<body>
+    <div class="top-right">
+      <a href="../course.html" class="nav-top active">Course</a>
+      <a href="../quiz.html" class="nav-top">Quiz</a>
+    </div>
 
-<div class="progress" id="progress">1 / 4</div>
+    <section class="wrap">
+      <div class="card" id="card">
+        <div class="image-box">
+          <img id="img" src="../assets/solar.png" />
+        </div>
 
-<div class="top-right">
-<a href="../course.html" class="nav-top active">Course</a>
-<a href="../quiz.html" class="nav-top">Quiz</a>
-</div>
+        <h1 id="title">ระบบสุริยะคืออะไร</h1>
 
-<section class="wrap">
+        <p id="desc">
+          ระบบสุริยะ คือ ระบบดาวที่มีดวงอาทิตย์เป็นศูนย์กลาง และมีวัตถุต่าง ๆ
+          โคจรรอบอยู่ภายใต้แรงโน้มถ่วง เช่น ดาวเคราะห์ 8 ดวง ดวงจันทร์
+          ดาวเคราะห์แคระ ดาวเคราะห์น้อย ดาวหาง และสะเก็ดดาว
+          ระบบสุริยะเป็นเพียงส่วนเล็ก ๆ ส่วนหนึ่งของกาแล็กซีทางช้างเผือก
+        </p>
+      </div>
 
-<div class="card" id="card">
+      <div class="nav">
+        <button onclick="prevSlide()">⬅️ ก่อนหน้า</button>
+        <button onclick="nextSlide()">ถัดไป ➡️</button>
+      </div>
+    </section>
 
-<div class="image-box">
-<img id="img" src="assets/space1.png">
-</div>
+    <script>
+      const slides = [
+        {
+          title: "ระบบสุริยะคืออะไร",
+          img: "../assets/solar.png",
+          desc: "ระบบสุริยะ คือ ระบบดาวที่มีดวงอาทิตย์เป็นศูนย์กลาง และมีวัตถุต่าง ๆ โคจรรอบอยู่ภายใต้แรงโน้มถ่วง เช่น ดาวเคราะห์ 8 ดวง ดวงจันทร์ ดาวเคราะห์แคระ ดาวเคราะห์น้อย ดาวหาง และสะเก็ดดาว ระบบสุริยะเป็นเพียงส่วนเล็ก ๆ ส่วนหนึ่งของกาแล็กซีทางช้างเผือก",
+        },
+        {
+          title: "กำเนิดระบบสุริยะ",
+          img: "../assets/solar.png",
+          desc: "นักวิทยาศาสตร์เชื่อว่าระบบสุริยะเกิดขึ้นเมื่อประมาณ 4,600 ล้านปีก่อน จากกลุ่มก๊าซและฝุ่นขนาดใหญ่ที่ยุบตัวลงด้วยแรงโน้มถ่วง ส่วนกลางกลายเป็นดวงอาทิตย์ ส่วนที่เหลือรวมตัวกันเป็นดาวเคราะห์ ดวงจันทร์ และวัตถุอื่น ๆ",
+        },
+        {
+          title: "การแบ่งกลุ่มดาวเคราะห์",
+          img: "../assets/solar.png",
+          desc: "ดาวเคราะห์ในระบบสุริยะแบ่งได้ 2 กลุ่มใหญ่ คือ ดาวเคราะห์หิน ได้แก่ พุธ ศุกร์ โลก และอังคาร ซึ่งมีพื้นผิวแข็ง และดาวเคราะห์แก๊สหรือยักษ์น้ำแข็ง ได้แก่ พฤหัสบดี เสาร์ ยูเรนัส และเนปจูน",
+        },
+        {
+          title: "ดวงอาทิตย์ ศูนย์กลางของระบบ",
+          img: "../assets/sun.png",
+          desc: "ดวงอาทิตย์เป็นดาวฤกษ์ที่มีมวลมากที่สุดในระบบสุริยะ คิดเป็นมากกว่า 99% ของมวลทั้งหมด ให้แสงสว่างและพลังงานความร้อนแก่ดาวเคราะห์ทุกดวง พลังงานของดวงอาทิตย์เกิดจากปฏิกิริยานิวเคลียร์ฟิวชันภายในแกนกลาง",
+        },
+        {
+          title: "ดาวพุธ",
+          img: "../assets/mercury.png",
+          desc: "ดาวพุธเป็นดาวเคราะห์ที่อยู่ใกล้ดวงอาทิตย์ที่สุด และมีขนาดเล็กที่สุดในระบบสุริยะ พื้นผิวเต็มไปด้วยหลุมอุกกาบาต อุณหภูมิกลางวันร้อนจัด แต่กลางคืนหนาวมาก เพราะแทบไม่มีชั้นบรรยากาศ",
+        },
+        {
+          title: "ดาวศุกร์",
+          img: "../assets/venus.png",
+          desc: "ดาวศุกร์มีขนาดใกล้เคียงโลกมาก จึงถูกเรียกว่าแฝดของโลก แต่มีชั้นบรรยากาศหนาแน่นเต็มไปด้วยก๊าซคาร์บอนไดออกไซด์ ทำให้เกิดภาวะเรือนกระจกอย่างรุนแรง เป็นดาวเคราะห์ที่ร้อนที่สุดในระบบสุริยะ",
+        },
+        {
+          title: "โลก",
+          img: "../assets/earth.png",
+          desc: "โลกเป็นดาวเคราะห์ดวงเดียวที่ทราบแน่ชัดว่ามีสิ่งมีชีวิต มีน้ำในสถานะของเหลวจำนวนมาก มีชั้นบรรยากาศที่เหมาะสมต่อการดำรงชีวิต และมีดวงจันทร์บริวาร 1 ดวง",
+        },
+        {
+          title: "ดาวอังคาร",
+          img: "../assets/mars.png",
+          desc: "ดาวอังคารมีสีแดงจากสนิมเหล็กบนพื้นผิว มีภูเขาไฟขนาดใหญ่และหุบเขายาวมหาศาล เชื่อว่าอดีตเคยมีน้ำไหลบนพื้นผิว จึงเป็นดาวเคราะห์ที่มนุษย์สนใจสำรวจมากที่สุดดวงหนึ่ง",
+        },
+        {
+          title: "ดาวพฤหัสบดี",
+          img: "../assets/jupiter.png",
+          desc: "ดาวพฤหัสบดีเป็นดาวเคราะห์ที่ใหญ่ที่สุดในระบบสุริยะ เป็นดาวแก๊สยักษ์ มีพายุขนาดมหึมาที่เรียกว่า จุดแดงใหญ่ และมีดวงจันทร์บริวารจำนวนมาก",
+        },
+        {
+          title: "ดาวเสาร์",
+          img: "../assets/saturn.png",
+          desc: "ดาวเสาร์มีชื่อเสียงจากวงแหวนขนาดใหญ่สวยงาม ซึ่งประกอบด้วยน้ำแข็ง ฝุ่น และเศษหิน เป็นดาวแก๊สยักษ์ที่มีความหนาแน่นต่ำมาก และมีดวงจันทร์หลายดวง",
+        },
+        {
+          title: "ดาวยูเรนัส",
+          img: "../assets/uranus.png",
+          desc: "ดาวยูเรนัสเป็นยักษ์น้ำแข็ง มีสีฟ้าอมเขียวจากก๊าซมีเทน จุดเด่นคือแกนหมุนเอียงมากจนเหมือนหมุนตะแคงไปด้านข้าง",
+        },
+        {
+          title: "ดาวเนปจูน",
+          img: "../assets/neptune.png",
+          desc: "ดาวเนปจูนเป็นดาวเคราะห์ที่อยู่ไกลจากดวงอาทิตย์ที่สุด มีสีน้ำเงินเข้ม และมีลมพายุรุนแรงมาก เป็นหนึ่งในดาวยักษ์น้ำแข็งของระบบสุริยะ",
+        },
+        {
+          title: "วัตถุอื่นในระบบสุริยะ",
+          img: "../assets/solar5.png",
+          desc: "นอกจากดาวเคราะห์ ยังมีดาวเคราะห์แคระ เช่น พลูโต แถบดาวเคราะห์น้อยระหว่างดาวอังคารกับดาวพฤหัสบดี ดาวหางที่มีหางยาวเมื่อเข้าใกล้ดวงอาทิตย์ และอุกกาบาตขนาดต่าง ๆ",
+        },
+        {
+          title: "ความสำคัญของระบบสุริยะ",
+          img: "../assets/solar5.png",
+          desc: "การศึกษาระบบสุริยะช่วยให้มนุษย์เข้าใจการกำเนิดดาวเคราะห์ ต้นกำเนิดโลก ความเป็นไปได้ของสิ่งมีชีวิตบนดาวอื่น และเป็นพื้นฐานสำคัญของการสำรวจอวกาศในอนาคต",
+        },
+      ];
 
-<h1 id="title">ระบบสุริยะคืออะไร</h1>
+      let index = 0;
 
-<p id="desc">
-ระบบสุริยะ คือ ระบบดาวที่มีดวงอาทิตย์เป็นศูนย์กลาง และมีวัตถุต่าง ๆ โคจรรอบอยู่ภายใต้แรงโน้มถ่วง เช่น ดาวเคราะห์ 8 ดวง ดวงจันทร์ ดาวเคราะห์แคระ ดาวเคราะห์น้อย ดาวหาง และสะเก็ดดาว ระบบสุริยะเป็นเพียงส่วนเล็ก ๆ ส่วนหนึ่งของกาแล็กซีทางช้างเผือก
-</p>
+      function render() {
+        document.getElementById("title").innerText = slides[index].title;
+        document.getElementById("desc").innerText = slides[index].desc;
+        document.getElementById("img").src = slides[index].img;
+        document.getElementById("progress").innerText =
+          index + 1 + " / " + slides.length;
 
-</div>
+        const nextBtn = document.querySelectorAll(".nav button")[1];
 
-<div class="nav">
-<button onclick="prevSlide()">⬅️ ก่อนหน้า</button>
-<button onclick="nextSlide()">ถัดไป ➡️</button>
-</div>
+        if (index === slides.length - 1) {
+          nextBtn.innerText = "กลับหน้า Course";
+        } else {
+          nextBtn.innerText = "ถัดไป ➡️";
+        }
+      }
 
-</section>
+      function nextSlide() {
+        if (index < slides.length - 1) {
+          index++;
+          render();
+        } else {
+          window.location.href = "../course.html";
+        }
+      }
 
-<script>
-const slides = [
-{
-title:"ระบบสุริยะคืออะไร",
-img:"assets/solar1.png",
-desc:"ระบบสุริยะ คือ ระบบดาวที่มีดวงอาทิตย์เป็นศูนย์กลาง และมีวัตถุต่าง ๆ โคจรรอบอยู่ภายใต้แรงโน้มถ่วง เช่น ดาวเคราะห์ 8 ดวง ดวงจันทร์ ดาวเคราะห์แคระ ดาวเคราะห์น้อย ดาวหาง และสะเก็ดดาว ระบบสุริยะเป็นเพียงส่วนเล็ก ๆ ส่วนหนึ่งของกาแล็กซีทางช้างเผือก"
-},
-{
-title:"กำเนิดระบบสุริยะ",
-img:"assets/solar2.png",
-desc:"นักวิทยาศาสตร์เชื่อว่าระบบสุริยะเกิดขึ้นเมื่อประมาณ 4,600 ล้านปีก่อน จากกลุ่มก๊าซและฝุ่นขนาดใหญ่ที่ยุบตัวลงด้วยแรงโน้มถ่วง ส่วนกลางกลายเป็นดวงอาทิตย์ ส่วนที่เหลือรวมตัวกันเป็นดาวเคราะห์ ดวงจันทร์ และวัตถุอื่น ๆ"
-},
-{
-title:"ดวงอาทิตย์ ศูนย์กลางของระบบ",
-img:"assets/solar3.png",
-desc:"ดวงอาทิตย์เป็นดาวฤกษ์ที่มีมวลมากที่สุดในระบบสุริยะ คิดเป็นมากกว่า 99% ของมวลทั้งหมด ให้แสงสว่างและพลังงานความร้อนแก่ดาวเคราะห์ทุกดวง พลังงานของดวงอาทิตย์เกิดจากปฏิกิริยานิวเคลียร์ฟิวชันภายในแกนกลาง"
-},
-{
-title:"การแบ่งกลุ่มดาวเคราะห์",
-img:"assets/solar4.png",
-desc:"ดาวเคราะห์ในระบบสุริยะแบ่งได้ 2 กลุ่มใหญ่ คือ ดาวเคราะห์หิน ได้แก่ พุธ ศุกร์ โลก และอังคาร ซึ่งมีพื้นผิวแข็ง และดาวเคราะห์แก๊สหรือยักษ์น้ำแข็ง ได้แก่ พฤหัสบดี เสาร์ ยูเรนัส และเนปจูน"
-},
-{
-title:"ดาวพุธ",
-img:"assets/solar5.png",
-desc:"ดาวพุธเป็นดาวเคราะห์ที่อยู่ใกล้ดวงอาทิตย์ที่สุด และมีขนาดเล็กที่สุดในระบบสุริยะ พื้นผิวเต็มไปด้วยหลุมอุกกาบาต อุณหภูมิกลางวันร้อนจัด แต่กลางคืนหนาวมาก เพราะแทบไม่มีชั้นบรรยากาศ"
-},
-{
-title:"ดาวศุกร์",
-img:"assets/solar6.png",
-desc:"ดาวศุกร์มีขนาดใกล้เคียงโลกมาก จึงถูกเรียกว่าแฝดของโลก แต่มีชั้นบรรยากาศหนาแน่นเต็มไปด้วยก๊าซคาร์บอนไดออกไซด์ ทำให้เกิดภาวะเรือนกระจกอย่างรุนแรง เป็นดาวเคราะห์ที่ร้อนที่สุดในระบบสุริยะ"
-},
-{
-title:"โลก",
-img:"assets/solar7.png",
-desc:"โลกเป็นดาวเคราะห์ดวงเดียวที่ทราบแน่ชัดว่ามีสิ่งมีชีวิต มีน้ำในสถานะของเหลวจำนวนมาก มีชั้นบรรยากาศที่เหมาะสมต่อการดำรงชีวิต และมีดวงจันทร์บริวาร 1 ดวง"
-},
-{
-title:"ดาวอังคาร",
-img:"assets/solar8.png",
-desc:"ดาวอังคารมีสีแดงจากสนิมเหล็กบนพื้นผิว มีภูเขาไฟขนาดใหญ่และหุบเขายาวมหาศาล เชื่อว่าอดีตเคยมีน้ำไหลบนพื้นผิว จึงเป็นดาวเคราะห์ที่มนุษย์สนใจสำรวจมากที่สุดดวงหนึ่ง"
-},
-{
-title:"ดาวพฤหัสบดี",
-img:"assets/solar9.png",
-desc:"ดาวพฤหัสบดีเป็นดาวเคราะห์ที่ใหญ่ที่สุดในระบบสุริยะ เป็นดาวแก๊สยักษ์ มีพายุขนาดมหึมาที่เรียกว่า จุดแดงใหญ่ และมีดวงจันทร์บริวารจำนวนมาก"
-},
-{
-title:"ดาวเสาร์",
-img:"assets/solar10.png",
-desc:"ดาวเสาร์มีชื่อเสียงจากวงแหวนขนาดใหญ่สวยงาม ซึ่งประกอบด้วยน้ำแข็ง ฝุ่น และเศษหิน เป็นดาวแก๊สยักษ์ที่มีความหนาแน่นต่ำมาก และมีดวงจันทร์หลายดวง"
-},
-{
-title:"ดาวยูเรนัส",
-img:"assets/solar11.png",
-desc:"ดาวยูเรนัสเป็นยักษ์น้ำแข็ง มีสีฟ้าอมเขียวจากก๊าซมีเทน จุดเด่นคือแกนหมุนเอียงมากจนเหมือนหมุนตะแคงไปด้านข้าง"
-},
-{
-title:"ดาวเนปจูน",
-img:"assets/solar12.png",
-desc:"ดาวเนปจูนเป็นดาวเคราะห์ที่อยู่ไกลจากดวงอาทิตย์ที่สุด มีสีน้ำเงินเข้ม และมีลมพายุรุนแรงมาก เป็นหนึ่งในดาวยักษ์น้ำแข็งของระบบสุริยะ"
-},
-{
-title:"วัตถุอื่นในระบบสุริยะ",
-img:"assets/solar13.png",
-desc:"นอกจากดาวเคราะห์ ยังมีดาวเคราะห์แคระ เช่น พลูโต แถบดาวเคราะห์น้อยระหว่างดาวอังคารกับดาวพฤหัสบดี ดาวหางที่มีหางยาวเมื่อเข้าใกล้ดวงอาทิตย์ และอุกกาบาตขนาดต่าง ๆ"
-},
-{
-title:"ความสำคัญของระบบสุริยะ",
-img:"assets/solar14.png",
-desc:"การศึกษาระบบสุริยะช่วยให้มนุษย์เข้าใจการกำเนิดดาวเคราะห์ ต้นกำเนิดโลก ความเป็นไปได้ของสิ่งมีชีวิตบนดาวอื่น และเป็นพื้นฐานสำคัญของการสำรวจอวกาศในอนาคต"
-}
-];
+      function prevSlide() {
+        if (index > 0) {
+          index--;
+          render();
+        }
+      }
 
-let index = 0;
-
-function render(){
-document.getElementById("title").innerText = slides[index].title;
-document.getElementById("desc").innerText = slides[index].desc;
-document.getElementById("img").src = slides[index].img;
-document.getElementById("progress").innerText = (index+1) + " / " + slides.length;
-
-const nextBtn = document.querySelectorAll(".nav button")[1];
-
-if(index === slides.length - 1){
-nextBtn.innerText = "กลับหน้า Course";
-}else{
-nextBtn.innerText = "ถัดไป ➡️";
-}
-}
-
-function nextSlide(){
-if(index < slides.length - 1){
-index++;
-render();
-}else{
-window.location.href = "../course.html";
-}
-}
-
-function prevSlide(){
-if(index > 0){
-index--;
-render();
-}
-}
-
-render();
-</script>
-
-</body>
+      render();
+    </script>
+  </body>
 </html>

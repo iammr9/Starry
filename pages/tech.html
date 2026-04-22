@@ -1,325 +1,350 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>StarZ - เทคโนโลยีอวกาศ</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <title>StarZ - เทคโนโลยีอวกาศ</title>
 
-<style>
-*{box-sizing:border-box}
-html,body{height:100%}
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        min-height: 100%;
+      }
 
-body{
-margin:0;
-font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;
-color:#e8ecff;
-background:
-radial-gradient(1200px 800px at 80% -10%, #1a1f5a 0%, transparent 60%),
-radial-gradient(1000px 700px at -10% 110%, #0a3b2f 0%, transparent 60%),
-#050814;
-overflow:hidden;
-}
+      body {
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Ubuntu,
+          sans-serif;
+        color: #e8ecff;
+        background:
+          radial-gradient(
+            1200px 800px at 80% -10%,
+            #1a1f5a 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            1000px 700px at -10% 110%,
+            #0a3b2f 0%,
+            transparent 60%
+          ),
+          #050814;
+        overflow: hidden;
+      }
 
-body::after{
-content:"";
-position:absolute;
-inset:0;
-min-height:100%;
-background:url("https://www.transparenttextures.com/patterns/stardust.png");
-opacity:.3;
-pointer-events:none;
-z-index:0;
-}
+      body::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        min-height: 100%;
+        background: url("https://www.transparenttextures.com/patterns/stardust.png");
+        opacity: 0.3;
+        pointer-events: none;
+        z-index: 0;
+      }
 
-/* navbar */
-.top-right{
-position:absolute;
-top:18px;
-right:24px;
-display:flex;
-gap:10px;
-z-index:10;
-}
+      /* navbar */
+      .top-right {
+        position: absolute;
+        top: 18px;
+        right: 24px;
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+      }
 
-.nav-top{
-text-decoration:none;
-color:#fff;
-padding:10px 18px;
-border-radius:14px;
-border:1px solid rgba(255,255,255,.12);
-background:linear-gradient(
-180deg,
-rgba(255,255,255,.08),
-rgba(255,255,255,.02)
-);
-font-size:15px;
-font-weight:600;
-display:flex;
-align-items:center;
-justify-content:center;
-min-width:95px;
-height:46px;
-transition:.2s;
-}
+      .nav-top {
+        text-decoration: none;
+        color: #fff;
+        padding: 10px 18px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.08),
+          rgba(255, 255, 255, 0.02)
+        );
+        font-size: 15px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 95px;
+        height: 46px;
+        transition: 0.2s;
+      }
 
-.nav-top:hover{
-transform:translateY(-2px);
-}
+      .nav-top:hover {
+        transform: translateY(-2px);
+      }
 
-.nav-top.active{
-background:#5e72eb;
-}
+      .nav-top.active {
+        background: #5e72eb;
+      }
 
-/* content */
-.wrap{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-padding:24px;
-}
+      /* content */
+      .wrap {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 24px;
+      }
 
-.progress{
-position:absolute;
-top:22px;
-left:24px;
-opacity:.75;
-font-size:15px;
-}
+      .progress {
+        position: absolute;
+        top: 22px;
+        left: 24px;
+        opacity: 0.75;
+        font-size: 15px;
+      }
 
-.image-box{
-height:280px;
-display:flex;
-align-items:center;
-justify-content:center;
-margin-bottom:18px;
-}
+      .image-box {
+        height: 280px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+      }
 
-.image-box img{
-max-height:100%;
-max-width:100%;
-animation:float 3s ease-in-out infinite;
-}
+      .image-box img {
+        max-height: 100%;
+        max-width: 100%;
+        animation: float 3s ease-in-out infinite;
+      }
 
-@keyframes float{
-0%{transform:translateY(0)}
-50%{transform:translateY(-10px)}
-100%{transform:translateY(0)}
-}
+      @keyframes float {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
 
-h1{
-font-size:32px;
-margin:0 0 12px;
-}
+      h1 {
+        font-size: 32px;
+        margin: 0 0 12px;
+      }
 
-p{
-font-size:16px;
-line-height:1.7;
-opacity:.95;
-max-width:760px;
-margin:auto;
-}
+      p {
+        font-size: 16px;
+        line-height: 1.7;
+        opacity: 0.95;
+        max-width: 760px;
+        margin: auto;
+      }
 
-.nav{
-margin-top:20px;
-display:flex;
-gap:12px;
-}
+      .nav {
+        margin-top: 20px;
+        display: flex;
+        gap: 12px;
+      }
 
-.nav button{
-padding:12px 18px;
-border:none;
-border-radius:14px;
-cursor:pointer;
-color:#fff;
-background:#5e72eb;
-font-size:16px;
-transition:.2s;
-}
+      .nav button {
+        padding: 12px 18px;
+        border: none;
+        border-radius: 14px;
+        cursor: pointer;
+        color: #fff;
+        background: #5e72eb;
+        font-size: 16px;
+        transition: 0.2s;
+      }
 
-.nav button:hover{
-transform:translateY(-2px);
-}
+      .nav button:hover {
+        transform: translateY(-2px);
+      }
 
-@media (max-width:768px){
+      @media (max-width: 768px) {
+        body {
+          padding: 14px;
+          overflow: auto;
+        }
 
-body{
-padding:14px;
-overflow:auto;
-}
+        .wrap {
+          padding: 16px;
+          justify-content: flex-start;
+          padding-top: 90px;
+        }
 
-.wrap{
-padding:16px;
-justify-content:flex-start;
-padding-top:90px;
-}
+        .top-right {
+          top: 14px;
+          right: 14px;
+          gap: 8px;
+        }
 
-.top-right{
-top:14px;
-right:14px;
-gap:8px;
-}
+        .nav-top {
+          min-width: 78px;
+          height: 40px;
+          font-size: 14px;
+          padding: 8px 12px;
+        }
 
-.nav-top{
-min-width:78px;
-height:40px;
-font-size:14px;
-padding:8px 12px;
-}
+        .progress {
+          top: 18px;
+          left: 14px;
+          font-size: 14px;
+        }
 
-.progress{
-top:18px;
-left:14px;
-font-size:14px;
-}
+        h1 {
+          font-size: 24px;
+        }
 
-h1{
-font-size:24px;
-}
+        p {
+          font-size: 15px;
+          line-height: 1.6;
+        }
 
-p{
-font-size:15px;
-line-height:1.6;
-}
+        .image-box {
+          height: 180px;
+        }
 
-.image-box{
-height:180px;
-}
+        .nav {
+          width: 100%;
+          flex-direction: column;
+        }
 
-.nav{
-width:100%;
-flex-direction:column;
-}
+        .nav button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
 
-.nav button{
-width:100%;
-}
-}
-</style>
-</head>
+  <body>
+    <div class="progress" id="progress">1 / 4</div>
 
-<body>
+    <div class="top-right">
+      <a href="../course.html" class="nav-top active">Course</a>
+      <a href="../quiz.html" class="nav-top">Quiz</a>
+    </div>
 
-<div class="progress" id="progress">1 / 4</div>
+    <section class="wrap">
+      <div class="card" id="card">
+        <div class="image-box">
+          <img id="img" src="../assets/tech.png" />
+        </div>
 
-<div class="top-right">
-<a href="../course.html" class="nav-top active">Course</a>
-<a href="../quiz.html" class="nav-top">Quiz</a>
-</div>
+        <h1 id="title">เทคโนโลยีอวกาศคืออะไร</h1>
 
-<section class="wrap">
+        <p id="desc">
+          เทคโนโลยีอวกาศ คือ เทคโนโลยีที่มนุษย์พัฒนาขึ้นเพื่อใช้ศึกษาค้นคว้า
+          สำรวจ และใช้ประโยชน์จากอวกาศ เช่น การส่งวัตถุขึ้นสู่วงโคจร
+          การสังเกตโลกจากอวกาศ และการสื่อสารผ่านดาวเทียม
+          เทคโนโลยีเหล่านี้มีบทบาทสำคัญทั้งด้านวิทยาศาสตร์และชีวิตประจำวัน
+        </p>
+      </div>
 
-<div class="card" id="card">
+      <div class="nav">
+        <button onclick="prevSlide()">⬅️ ก่อนหน้า</button>
+        <button onclick="nextSlide()">ถัดไป ➡️</button>
+      </div>
+    </section>
 
-<div class="image-box">
-<img id="img" src="assets/space1.png">
-</div>
+    <script>
+      const slides = [
+        {
+          title: "เทคโนโลยีอวกาศคืออะไร",
+          img: "../assets/tech.png",
+          desc: "เทคโนโลยีอวกาศ คือ เทคโนโลยีที่มนุษย์พัฒนาขึ้นเพื่อใช้ศึกษาค้นคว้า สำรวจ และใช้ประโยชน์จากอวกาศ เช่น การส่งวัตถุขึ้นสู่วงโคจร การสังเกตโลกจากอวกาศ และการสื่อสารผ่านดาวเทียม เทคโนโลยีเหล่านี้มีบทบาทสำคัญทั้งด้านวิทยาศาสตร์และชีวิตประจำวัน",
+        },
+        {
+          title: "จรวดและการส่งวัตถุสู่อวกาศ",
+          img: "../assets/rocket.png",
+          desc: "จรวดเป็นพาหนะสำคัญที่ใช้ส่งดาวเทียม ยานอวกาศ หรืออุปกรณ์ต่าง ๆ ขึ้นสู่อวกาศ โดยอาศัยแรงขับจากการเผาไหม้เชื้อเพลิงเพื่อเอาชนะแรงโน้มถ่วงของโลก จรวดหลายรุ่นสามารถนำบางส่วนกลับมาใช้ใหม่ได้",
+        },
+        {
+          title: "ดาวเทียม",
+          img: "../assets/satellite.png",
+          desc: "ดาวเทียมคือวัตถุที่มนุษย์ส่งขึ้นไปโคจรรอบโลกหรือวัตถุอื่น ใช้ในงานหลายด้าน เช่น การสื่อสาร การพยากรณ์อากาศ การถ่ายภาพพื้นผิวโลก การนำทาง และการศึกษาทางวิทยาศาสตร์",
+        },
+        {
+          title: "กล้องโทรทรรศน์อวกาศ",
+          img: "../assets/cam.png",
+          desc: "กล้องโทรทรรศน์อวกาศถูกส่งออกนอกชั้นบรรยากาศของโลก เพื่อหลีกเลี่ยงการรบกวนจากอากาศ ทำให้สามารถรับภาพคมชัดและศึกษาวัตถุท้องฟ้าได้ดี ตัวอย่างเช่น กล้องฮับเบิล และกล้องเจมส์เว็บบ์",
+        },
+        {
+          title: "ยานอวกาศ",
+          img: "../assets/yan.png",
+          desc: "ยานอวกาศเป็นยานที่ใช้เดินทางหรือสำรวจอวกาศ อาจเป็นยานไร้คนขับหรือยานที่มีมนุษย์โดยสาร ใช้ศึกษาดาวเคราะห์ ดวงจันทร์ ดาวหาง และพื้นที่ไกลออกไปในระบบสุริยะ",
+        },
+        {
+          title: "สถานีอวกาศ",
+          img: "../assets/iss.png",
+          desc: "สถานีอวกาศเป็นห้องปฏิบัติการที่โคจรรอบโลก ใช้สำหรับการทดลองวิทยาศาสตร์ในสภาวะไร้น้ำหนัก รวมถึงศึกษาผลกระทบของอวกาศต่อร่างกายมนุษย์ ตัวอย่างสำคัญคือ สถานีอวกาศนานาชาติ หรือ ISS",
+        },
+        {
+          title: "เทคโนโลยีอวกาศกับชีวิตประจำวัน",
+          img: "../assets/gps.png",
+          desc: "เทคโนโลยีอวกาศถูกนำมาใช้ในชีวิตประจำวันมากมาย เช่น ระบบ GPS การพยากรณ์อากาศ การถ่ายทอดสดผ่านสัญญาณดาวเทียม อินเทอร์เน็ตบางพื้นที่ และการติดตามภัยพิบัติจากภาพถ่ายดาวเทียม",
+        },
+        {
+          title: "การสำรวจโลกจากอวกาศ",
+          img: "../assets/satearth.png",
+          desc: "ดาวเทียมสำรวจโลกช่วยติดตามสภาพอากาศ ป่าไม้ มลพิษ น้ำท่วม ไฟป่า และการเปลี่ยนแปลงของสิ่งแวดล้อม ข้อมูลเหล่านี้ช่วยวางแผนทรัพยากรและรับมือภัยธรรมชาติได้อย่างมีประสิทธิภาพ",
+        },
+        {
+          title: "อนาคตของเทคโนโลยีอวกาศ",
+          img: "../assets/future.png",
+          desc: "ในอนาคตมนุษย์กำลังพัฒนาเทคโนโลยีเพื่อเดินทางกลับไปดวงจันทร์ สำรวจดาวอังคาร สร้างจรวดที่ประหยัดขึ้น และพัฒนาเทคโนโลยีสำหรับการอยู่อาศัยนอกโลก",
+        },
+        {
+          title: "ความสำคัญของเทคโนโลยีอวกาศ",
+          img: "../assets/future.png",
+          desc: "เทคโนโลยีอวกาศช่วยขยายขอบเขตความรู้ของมนุษย์ พัฒนาการสื่อสาร ความปลอดภัย การคมนาคม และการวิจัยทางวิทยาศาสตร์ อีกทั้งยังเป็นแรงผลักดันสำคัญของนวัตกรรมสมัยใหม่",
+        },
+      ];
 
-<h1 id="title">เทคโนโลยีอวกาศคืออะไร</h1>
+      let index = 0;
 
-<p id="desc">
-เทคโนโลยีอวกาศ คือ เทคโนโลยีที่มนุษย์พัฒนาขึ้นเพื่อใช้ศึกษาค้นคว้า สำรวจ และใช้ประโยชน์จากอวกาศ เช่น การส่งวัตถุขึ้นสู่วงโคจร การสังเกตโลกจากอวกาศ และการสื่อสารผ่านดาวเทียม เทคโนโลยีเหล่านี้มีบทบาทสำคัญทั้งด้านวิทยาศาสตร์และชีวิตประจำวัน
-</p>
+      function render() {
+        document.getElementById("title").innerText = slides[index].title;
+        document.getElementById("desc").innerText = slides[index].desc;
+        document.getElementById("img").src = slides[index].img;
+        document.getElementById("progress").innerText =
+          index + 1 + " / " + slides.length;
 
-</div>
+        const nextBtn = document.querySelectorAll(".nav button")[1];
 
-<div class="nav">
-<button onclick="prevSlide()">⬅️ ก่อนหน้า</button>
-<button onclick="nextSlide()">ถัดไป ➡️</button>
-</div>
+        if (index === slides.length - 1) {
+          nextBtn.innerText = "กลับหน้า Course";
+        } else {
+          nextBtn.innerText = "ถัดไป ➡️";
+        }
+      }
 
-</section>
+      function nextSlide() {
+        if (index < slides.length - 1) {
+          index++;
+          render();
+        } else {
+          window.location.href = "../course.html";
+        }
+      }
 
-<script>
-const slides = [
-{
-title:"เทคโนโลยีอวกาศคืออะไร",
-img:"assets/tech1.png",
-desc:"เทคโนโลยีอวกาศ คือ เทคโนโลยีที่มนุษย์พัฒนาขึ้นเพื่อใช้ศึกษาค้นคว้า สำรวจ และใช้ประโยชน์จากอวกาศ เช่น การส่งวัตถุขึ้นสู่วงโคจร การสังเกตโลกจากอวกาศ และการสื่อสารผ่านดาวเทียม เทคโนโลยีเหล่านี้มีบทบาทสำคัญทั้งด้านวิทยาศาสตร์และชีวิตประจำวัน"
-},
-{
-title:"จรวดและการส่งวัตถุสู่อวกาศ",
-img:"assets/tech2.png",
-desc:"จรวดเป็นพาหนะสำคัญที่ใช้ส่งดาวเทียม ยานอวกาศ หรืออุปกรณ์ต่าง ๆ ขึ้นสู่อวกาศ โดยอาศัยแรงขับจากการเผาไหม้เชื้อเพลิงเพื่อเอาชนะแรงโน้มถ่วงของโลก จรวดหลายรุ่นสามารถนำบางส่วนกลับมาใช้ใหม่ได้"
-},
-{
-title:"ดาวเทียม",
-img:"assets/tech3.png",
-desc:"ดาวเทียมคือวัตถุที่มนุษย์ส่งขึ้นไปโคจรรอบโลกหรือวัตถุอื่น ใช้ในงานหลายด้าน เช่น การสื่อสาร การพยากรณ์อากาศ การถ่ายภาพพื้นผิวโลก การนำทาง และการศึกษาทางวิทยาศาสตร์"
-},
-{
-title:"กล้องโทรทรรศน์อวกาศ",
-img:"assets/tech4.png",
-desc:"กล้องโทรทรรศน์อวกาศถูกส่งออกนอกชั้นบรรยากาศของโลก เพื่อหลีกเลี่ยงการรบกวนจากอากาศ ทำให้สามารถรับภาพคมชัดและศึกษาวัตถุท้องฟ้าได้ดี ตัวอย่างเช่น กล้องฮับเบิล และกล้องเจมส์เว็บบ์"
-},
-{
-title:"ยานอวกาศ",
-img:"assets/tech5.png",
-desc:"ยานอวกาศเป็นยานที่ใช้เดินทางหรือสำรวจอวกาศ อาจเป็นยานไร้คนขับหรือยานที่มีมนุษย์โดยสาร ใช้ศึกษาดาวเคราะห์ ดวงจันทร์ ดาวหาง และพื้นที่ไกลออกไปในระบบสุริยะ"
-},
-{
-title:"สถานีอวกาศ",
-img:"assets/tech6.png",
-desc:"สถานีอวกาศเป็นห้องปฏิบัติการที่โคจรรอบโลก ใช้สำหรับการทดลองวิทยาศาสตร์ในสภาวะไร้น้ำหนัก รวมถึงศึกษาผลกระทบของอวกาศต่อร่างกายมนุษย์ ตัวอย่างสำคัญคือ สถานีอวกาศนานาชาติ หรือ ISS"
-},
-{
-title:"เทคโนโลยีอวกาศกับชีวิตประจำวัน",
-img:"assets/tech7.png",
-desc:"เทคโนโลยีอวกาศถูกนำมาใช้ในชีวิตประจำวันมากมาย เช่น ระบบ GPS การพยากรณ์อากาศ การถ่ายทอดสดผ่านสัญญาณดาวเทียม อินเทอร์เน็ตบางพื้นที่ และการติดตามภัยพิบัติจากภาพถ่ายดาวเทียม"
-},
-{
-title:"การสำรวจโลกจากอวกาศ",
-img:"assets/tech8.png",
-desc:"ดาวเทียมสำรวจโลกช่วยติดตามสภาพอากาศ ป่าไม้ มลพิษ น้ำท่วม ไฟป่า และการเปลี่ยนแปลงของสิ่งแวดล้อม ข้อมูลเหล่านี้ช่วยวางแผนทรัพยากรและรับมือภัยธรรมชาติได้อย่างมีประสิทธิภาพ"
-},
-{
-title:"อนาคตของเทคโนโลยีอวกาศ",
-img:"assets/tech9.png",
-desc:"ในอนาคตมนุษย์กำลังพัฒนาเทคโนโลยีเพื่อเดินทางกลับไปดวงจันทร์ สำรวจดาวอังคาร สร้างจรวดที่ประหยัดขึ้น และพัฒนาเทคโนโลยีสำหรับการอยู่อาศัยนอกโลก"
-},
-{
-title:"ความสำคัญของเทคโนโลยีอวกาศ",
-img:"assets/tech10.png",
-desc:"เทคโนโลยีอวกาศช่วยขยายขอบเขตความรู้ของมนุษย์ พัฒนาการสื่อสาร ความปลอดภัย การคมนาคม และการวิจัยทางวิทยาศาสตร์ อีกทั้งยังเป็นแรงผลักดันสำคัญของนวัตกรรมสมัยใหม่"
-}
-];
+      function prevSlide() {
+        if (index > 0) {
+          index--;
+          render();
+        }
+      }
 
-let index = 0;
-
-function render(){
-document.getElementById("title").innerText = slides[index].title;
-document.getElementById("desc").innerText = slides[index].desc;
-document.getElementById("img").src = slides[index].img;
-document.getElementById("progress").innerText = (index+1) + " / " + slides.length;
-
-const nextBtn = document.querySelectorAll(".nav button")[1];
-
-if(index === slides.length - 1){
-nextBtn.innerText = "กลับหน้า Course";
-}else{
-nextBtn.innerText = "ถัดไป ➡️";
-}
-}
-
-function nextSlide(){
-if(index < slides.length - 1){
-index++;
-render();
-}else{
-window.location.href = "../course.html";
-}
-}
-
-function prevSlide(){
-if(index > 0){
-index--;
-render();
-}
-}
-
-render();
-</script>
-
-</body>
+      render();
+    </script>
+  </body>
 </html>

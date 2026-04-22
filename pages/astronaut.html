@@ -1,331 +1,361 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>StarZ - นักบินอวกาศ</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <title>StarZ - นักบินอวกาศ</title>
 
-<style>
-*{box-sizing:border-box}
-html,body{height:100%}
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        min-height: 100%;
+      }
 
-body{
-margin:0;
-font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;
-color:#e8ecff;
-background:
-radial-gradient(1200px 800px at 80% -10%, #1a1f5a 0%, transparent 60%),
-radial-gradient(1000px 700px at -10% 110%, #0a3b2f 0%, transparent 60%),
-#050814;
-overflow:hidden;
-}
+      body {
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Ubuntu,
+          sans-serif;
+        color: #e8ecff;
+        background:
+          radial-gradient(
+            1200px 800px at 80% -10%,
+            #1a1f5a 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            1000px 700px at -10% 110%,
+            #0a3b2f 0%,
+            transparent 60%
+          ),
+          #050814;
+        overflow: hidden;
+      }
 
-body::after{
-content:"";
-position:absolute;
-inset:0;
-min-height:100%;
-background:url("https://www.transparenttextures.com/patterns/stardust.png");
-opacity:.3;
-pointer-events:none;
-z-index:0;
-}
+      body::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        min-height: 100%;
+        background: url("https://www.transparenttextures.com/patterns/stardust.png");
+        opacity: 0.3;
+        pointer-events: none;
+        z-index: 0;
+      }
 
-/* navbar */
-.top-right{
-position:absolute;
-top:18px;
-right:24px;
-display:flex;
-gap:10px;
-z-index:10;
-}
+      /* navbar */
+      .top-right {
+        position: absolute;
+        top: 18px;
+        right: 24px;
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+      }
 
-.nav-top{
-text-decoration:none;
-color:#fff;
-padding:10px 18px;
-border-radius:14px;
-border:1px solid rgba(255,255,255,.12);
-background:linear-gradient(
-180deg,
-rgba(255,255,255,.08),
-rgba(255,255,255,.02)
-);
-font-size:15px;
-font-weight:600;
-display:flex;
-align-items:center;
-justify-content:center;
-min-width:95px;
-height:46px;
-transition:.2s;
-}
+      .nav-top {
+        text-decoration: none;
+        color: #fff;
+        padding: 10px 18px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.08),
+          rgba(255, 255, 255, 0.02)
+        );
+        font-size: 15px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 95px;
+        height: 46px;
+        transition: 0.2s;
+      }
 
-.nav-top:hover{
-transform:translateY(-2px);
-}
+      .nav-top:hover {
+        transform: translateY(-2px);
+      }
 
-.nav-top.active{
-background:#5e72eb;
-}
+      .nav-top.active {
+        background: #5e72eb;
+      }
 
-/* content */
-.wrap{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-padding:24px;
-}
+      /* content */
+      .wrap {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 24px;
+      }
 
-.progress{
-position:absolute;
-top:22px;
-left:24px;
-opacity:.75;
-font-size:15px;
-}
+      .progress {
+        position: absolute;
+        top: 22px;
+        left: 24px;
+        opacity: 0.75;
+        font-size: 15px;
+      }
 
-.image-box{
-height:280px;
-display:flex;
-align-items:center;
-justify-content:center;
-margin-bottom:18px;
-}
+      .image-box {
+        height: 280px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+      }
 
-.image-box img{
-max-height:100%;
-max-width:100%;
-animation:float 3s ease-in-out infinite;
-}
+      .image-box img {
+        max-height: 100%;
+        max-width: 100%;
+        animation: float 3s ease-in-out infinite;
+      }
 
-@keyframes float{
-0%{transform:translateY(0)}
-50%{transform:translateY(-10px)}
-100%{transform:translateY(0)}
-}
+      @keyframes float {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
 
-h1{
-font-size:32px;
-margin:0 0 12px;
-}
+      h1 {
+        font-size: 32px;
+        margin: 0 0 12px;
+      }
 
-p{
-font-size:16px;
-line-height:1.7;
-opacity:.95;
-max-width:760px;
-margin:auto;
-}
+      p {
+        font-size: 16px;
+        line-height: 1.7;
+        opacity: 0.95;
+        max-width: 760px;
+        margin: auto;
+      }
 
-.nav{
-margin-top:20px;
-display:flex;
-gap:12px;
-}
+      .nav {
+        margin-top: 20px;
+        display: flex;
+        gap: 12px;
+      }
 
-.nav button{
-padding:12px 18px;
-border:none;
-border-radius:14px;
-cursor:pointer;
-color:#fff;
-background:#5e72eb;
-font-size:16px;
-transition:.2s;
-}
+      .nav button {
+        padding: 12px 18px;
+        border: none;
+        border-radius: 14px;
+        cursor: pointer;
+        color: #fff;
+        background: #5e72eb;
+        font-size: 16px;
+        transition: 0.2s;
+      }
 
-.nav button:hover{
-transform:translateY(-2px);
-}
+      .nav button:hover {
+        transform: translateY(-2px);
+      }
 
-@media(max-width:768px){
-h1{font-size:28px}
-p{font-size:16px}
-.image-box{height:200px}
-}
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 28px;
+        }
+        p {
+          font-size: 16px;
+        }
+        .image-box {
+          height: 200px;
+        }
+      }
 
-@media (max-width:768px){
+      @media (max-width: 768px) {
+        body {
+          padding: 14px;
+          overflow: auto;
+        }
 
-body{
-padding:14px;
-overflow:auto;
-}
+        .wrap {
+          padding: 16px;
+          justify-content: flex-start;
+          padding-top: 90px;
+        }
 
-.wrap{
-padding:16px;
-justify-content:flex-start;
-padding-top:90px;
-}
+        .top-right {
+          top: 14px;
+          right: 14px;
+          gap: 8px;
+        }
 
-.top-right{
-top:14px;
-right:14px;
-gap:8px;
-}
+        .nav-top {
+          min-width: 78px;
+          height: 40px;
+          font-size: 14px;
+          padding: 8px 12px;
+        }
 
-.nav-top{
-min-width:78px;
-height:40px;
-font-size:14px;
-padding:8px 12px;
-}
+        .progress {
+          top: 18px;
+          left: 14px;
+          font-size: 14px;
+        }
 
-.progress{
-top:18px;
-left:14px;
-font-size:14px;
-}
+        h1 {
+          font-size: 24px;
+        }
 
-h1{
-font-size:24px;
-}
+        p {
+          font-size: 15px;
+          line-height: 1.6;
+        }
 
-p{
-font-size:15px;
-line-height:1.6;
-}
+        .image-box {
+          height: 180px;
+        }
 
-.image-box{
-height:180px;
-}
+        .nav {
+          width: 100%;
+          flex-direction: column;
+        }
 
-.nav{
-width:100%;
-flex-direction:column;
-}
+        .nav button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
 
-.nav button{
-width:100%;
-}
-}
-</style>
-</head>
+  <body>
+    <div class="progress" id="progress">1 / 4</div>
 
-<body>
+    <div class="top-right">
+      <a href="../course.html" class="nav-top active">Course</a>
+      <a href="../quiz.html" class="nav-top">Quiz</a>
+    </div>
 
-<div class="progress" id="progress">1 / 4</div>
+    <section class="wrap">
+      <div class="card" id="card">
+        <div class="image-box">
+          <img id="img" src="../assets/astronaut.png" />
+        </div>
 
-<div class="top-right">
-<a href="../course.html" class="nav-top active">Course</a>
-<a href="../quiz.html" class="nav-top">Quiz</a>
-</div>
+        <h1 id="title">นักบินอวกาศคืออะไร</h1>
 
-<section class="wrap">
+        <p id="desc">
+          นักบินอวกาศ คือ บุคคลที่ได้รับการฝึกฝนให้เดินทาง ปฏิบัติงาน
+          และใช้ชีวิตในอวกาศ มีหน้าที่ควบคุมยานอวกาศ ทำการทดลองทางวิทยาศาสตร์
+          ซ่อมบำรุงอุปกรณ์ และปฏิบัติภารกิจต่าง ๆ นอกโลก
+        </p>
+      </div>
 
-<div class="card" id="card">
+      <div class="nav">
+        <button onclick="prevSlide()">⬅️ ก่อนหน้า</button>
+        <button onclick="nextSlide()">ถัดไป ➡️</button>
+      </div>
+    </section>
 
-<div class="image-box">
-<img id="img" src="assets/space1.png">
-</div>
+    <script>
+      const slides = [
+        {
+          title: "นักบินอวกาศคืออะไร",
+          img: "../assets/astronaut.png",
+          desc: "นักบินอวกาศ คือ บุคคลที่ได้รับการฝึกฝนให้เดินทาง ปฏิบัติงาน และใช้ชีวิตในอวกาศ มีหน้าที่ควบคุมยานอวกาศ ทำการทดลองทางวิทยาศาสตร์ ซ่อมบำรุงอุปกรณ์ และปฏิบัติภารกิจต่าง ๆ นอกโลก",
+        },
+        {
+          title: "คุณสมบัติของนักบินอวกาศ",
+          img: "../assets/astronaut.png",
+          desc: "ผู้ที่จะเป็นนักบินอวกาศต้องมีสุขภาพแข็งแรง มีความรู้ด้านวิทยาศาสตร์ วิศวกรรม หรือการบิน สามารถทำงานเป็นทีมได้ดี มีวินัยสูง และรับมือกับสถานการณ์กดดันได้",
+        },
+        {
+          title: "การฝึกฝนก่อนขึ้นสู่อวกาศ",
+          img: "../assets/astronaut.png",
+          desc: "นักบินอวกาศต้องผ่านการฝึกอย่างหนัก เช่น ฝึกสภาพไร้น้ำหนัก ฝึกเอาตัวรอด ฝึกใช้อุปกรณ์ ฝึกจำลองภารกิจ และเรียนรู้ระบบต่าง ๆ ของยานอวกาศ เพื่อเตรียมพร้อมสำหรับสถานการณ์จริง",
+        },
+        {
+          title: "การใช้ชีวิตในอวกาศ",
+          img: "../assets/astronaut2.png",
+          desc: "การใช้ชีวิตในอวกาศแตกต่างจากบนโลกมาก เพราะอยู่ในสภาวะไร้น้ำหนัก การกินอาหาร การนอน การอาบน้ำ และการเคลื่อนไหวต้องใช้วิธีเฉพาะ นักบินอวกาศต้องออกกำลังกายสม่ำเสมอเพื่อลดผลกระทบต่อร่างกาย",
+        },
+        {
+          title: "หน้าที่บนสถานีอวกาศ",
+          img: "../assets/astronaut2.png",
+          desc: "นักบินอวกาศบนสถานีอวกาศมีหน้าที่ดูแลระบบต่าง ๆ ทำการทดลองทางวิทยาศาสตร์ สังเกตโลกจากอวกาศ ซ่อมแซมอุปกรณ์ และประสานงานกับศูนย์ควบคุมภาคพื้นดิน",
+        },
+        {
+          title: "การเดินอวกาศ",
+          img: "../assets/astronaut2.png",
+          desc: "บางภารกิจนักบินอวกาศต้องออกไปทำงานนอกยานหรือสถานีอวกาศ เรียกว่า การเดินอวกาศ หรือ Spacewalk โดยสวมชุดอวกาศพิเศษที่ช่วยป้องกันสุญญากาศ อุณหภูมิรุนแรง และรังสี",
+        },
+        {
+          title: "ผลกระทบต่อร่างกาย",
+          img: "../assets/astronaut3.png",
+          desc: "การอยู่ในอวกาศเป็นเวลานานอาจทำให้กล้ามเนื้ออ่อนแรง กระดูกสูญเสียมวล การทรงตัวเปลี่ยนแปลง และมีผลต่อระบบไหลเวียนเลือด นักบินอวกาศจึงต้องดูแลสุขภาพอย่างเข้มงวด",
+        },
+        {
+          title: "นักบินอวกาศคนสำคัญ",
+          img: "../assets/neil.png",
+          desc: "ตลอดประวัติศาสตร์มีนักบินอวกาศหลายคนที่สร้างความก้าวหน้า เช่น ยูริ กาการิน มนุษย์คนแรกในอวกาศ และนีล อาร์มสตรอง มนุษย์คนแรกที่เหยียบดวงจันทร์",
+        },
+        {
+          title: "อนาคตของนักบินอวกาศ",
+          img: "../assets/astronaut3.png",
+          desc: "ในอนาคตนักบินอวกาศอาจมีบทบาทในการตั้งฐานบนดวงจันทร์ เดินทางสู่ดาวอังคาร และทำภารกิจสำรวจอวกาศระยะไกล รวมถึงทำงานร่วมกับเทคโนโลยีหุ่นยนต์ขั้นสูง",
+        },
+        {
+          title: "แรงบันดาลใจจากนักบินอวกาศ",
+          img: "../assets/astronaut4.png",
+          desc: "นักบินอวกาศเป็นสัญลักษณ์ของความกล้าหาญ ความพยายาม และความอยากรู้อยากเห็นของมนุษย์ ช่วยสร้างแรงบันดาลใจให้คนรุ่นใหม่สนใจวิทยาศาสตร์ เทคโนโลยี และการสำรวจโลกกับจักรวาล",
+        },
+      ];
 
-<h1 id="title">นักบินอวกาศคืออะไร</h1>
+      let index = 0;
 
-<p id="desc">
-นักบินอวกาศ คือ บุคคลที่ได้รับการฝึกฝนให้เดินทาง ปฏิบัติงาน และใช้ชีวิตในอวกาศ มีหน้าที่ควบคุมยานอวกาศ ทำการทดลองทางวิทยาศาสตร์ ซ่อมบำรุงอุปกรณ์ และปฏิบัติภารกิจต่าง ๆ นอกโลก
-</p>
+      function render() {
+        document.getElementById("title").innerText = slides[index].title;
+        document.getElementById("desc").innerText = slides[index].desc;
+        document.getElementById("img").src = slides[index].img;
+        document.getElementById("progress").innerText =
+          index + 1 + " / " + slides.length;
 
-</div>
+        const nextBtn = document.querySelectorAll(".nav button")[1];
 
-<div class="nav">
-<button onclick="prevSlide()">⬅️ ก่อนหน้า</button>
-<button onclick="nextSlide()">ถัดไป ➡️</button>
-</div>
+        if (index === slides.length - 1) {
+          nextBtn.innerText = "กลับหน้า Course";
+        } else {
+          nextBtn.innerText = "ถัดไป ➡️";
+        }
+      }
 
-</section>
+      function nextSlide() {
+        if (index < slides.length - 1) {
+          index++;
+          render();
+        } else {
+          window.location.href = "../course.html";
+        }
+      }
 
-<script>
-const slides = [
-{
-title:"นักบินอวกาศคืออะไร",
-img:"assets/astronaut1.png",
-desc:"นักบินอวกาศ คือ บุคคลที่ได้รับการฝึกฝนให้เดินทาง ปฏิบัติงาน และใช้ชีวิตในอวกาศ มีหน้าที่ควบคุมยานอวกาศ ทำการทดลองทางวิทยาศาสตร์ ซ่อมบำรุงอุปกรณ์ และปฏิบัติภารกิจต่าง ๆ นอกโลก"
-},
-{
-title:"คุณสมบัติของนักบินอวกาศ",
-img:"assets/astronaut2.png",
-desc:"ผู้ที่จะเป็นนักบินอวกาศต้องมีสุขภาพแข็งแรง มีความรู้ด้านวิทยาศาสตร์ วิศวกรรม หรือการบิน สามารถทำงานเป็นทีมได้ดี มีวินัยสูง และรับมือกับสถานการณ์กดดันได้"
-},
-{
-title:"การฝึกฝนก่อนขึ้นสู่อวกาศ",
-img:"assets/astronaut3.png",
-desc:"นักบินอวกาศต้องผ่านการฝึกอย่างหนัก เช่น ฝึกสภาพไร้น้ำหนัก ฝึกเอาตัวรอด ฝึกใช้อุปกรณ์ ฝึกจำลองภารกิจ และเรียนรู้ระบบต่าง ๆ ของยานอวกาศ เพื่อเตรียมพร้อมสำหรับสถานการณ์จริง"
-},
-{
-title:"การใช้ชีวิตในอวกาศ",
-img:"assets/astronaut4.png",
-desc:"การใช้ชีวิตในอวกาศแตกต่างจากบนโลกมาก เพราะอยู่ในสภาวะไร้น้ำหนัก การกินอาหาร การนอน การอาบน้ำ และการเคลื่อนไหวต้องใช้วิธีเฉพาะ นักบินอวกาศต้องออกกำลังกายสม่ำเสมอเพื่อลดผลกระทบต่อร่างกาย"
-},
-{
-title:"หน้าที่บนสถานีอวกาศ",
-img:"assets/astronaut5.png",
-desc:"นักบินอวกาศบนสถานีอวกาศมีหน้าที่ดูแลระบบต่าง ๆ ทำการทดลองทางวิทยาศาสตร์ สังเกตโลกจากอวกาศ ซ่อมแซมอุปกรณ์ และประสานงานกับศูนย์ควบคุมภาคพื้นดิน"
-},
-{
-title:"การเดินอวกาศ",
-img:"assets/astronaut6.png",
-desc:"บางภารกิจนักบินอวกาศต้องออกไปทำงานนอกยานหรือสถานีอวกาศ เรียกว่า การเดินอวกาศ หรือ Spacewalk โดยสวมชุดอวกาศพิเศษที่ช่วยป้องกันสุญญากาศ อุณหภูมิรุนแรง และรังสี"
-},
-{
-title:"ผลกระทบต่อร่างกาย",
-img:"assets/astronaut7.png",
-desc:"การอยู่ในอวกาศเป็นเวลานานอาจทำให้กล้ามเนื้ออ่อนแรง กระดูกสูญเสียมวล การทรงตัวเปลี่ยนแปลง และมีผลต่อระบบไหลเวียนเลือด นักบินอวกาศจึงต้องดูแลสุขภาพอย่างเข้มงวด"
-},
-{
-title:"นักบินอวกาศคนสำคัญ",
-img:"assets/astronaut8.png",
-desc:"ตลอดประวัติศาสตร์มีนักบินอวกาศหลายคนที่สร้างความก้าวหน้า เช่น ยูริ กาการิน มนุษย์คนแรกในอวกาศ และนีล อาร์มสตรอง มนุษย์คนแรกที่เหยียบดวงจันทร์"
-},
-{
-title:"อนาคตของนักบินอวกาศ",
-img:"assets/astronaut9.png",
-desc:"ในอนาคตนักบินอวกาศอาจมีบทบาทในการตั้งฐานบนดวงจันทร์ เดินทางสู่ดาวอังคาร และทำภารกิจสำรวจอวกาศระยะไกล รวมถึงทำงานร่วมกับเทคโนโลยีหุ่นยนต์ขั้นสูง"
-},
-{
-title:"แรงบันดาลใจจากนักบินอวกาศ",
-img:"assets/astronaut10.png",
-desc:"นักบินอวกาศเป็นสัญลักษณ์ของความกล้าหาญ ความพยายาม และความอยากรู้อยากเห็นของมนุษย์ ช่วยสร้างแรงบันดาลใจให้คนรุ่นใหม่สนใจวิทยาศาสตร์ เทคโนโลยี และการสำรวจโลกกับจักรวาล"
-}
-];
+      function prevSlide() {
+        if (index > 0) {
+          index--;
+          render();
+        }
+      }
 
-let index = 0;
-
-function render(){
-document.getElementById("title").innerText = slides[index].title;
-document.getElementById("desc").innerText = slides[index].desc;
-document.getElementById("img").src = slides[index].img;
-document.getElementById("progress").innerText = (index+1) + " / " + slides.length;
-
-const nextBtn = document.querySelectorAll(".nav button")[1];
-
-if(index === slides.length - 1){
-nextBtn.innerText = "กลับหน้า Course";
-}else{
-nextBtn.innerText = "ถัดไป ➡️";
-}
-}
-
-function nextSlide(){
-if(index < slides.length - 1){
-index++;
-render();
-}else{
-window.location.href = "../course.html";
-}
-}
-
-function prevSlide(){
-if(index > 0){
-index--;
-render();
-}
-}
-
-render();
-</script>
-
-</body>
+      render();
+    </script>
+  </body>
 </html>

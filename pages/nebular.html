@@ -1,325 +1,349 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>StarZ - เนบิวลา</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <title>StarZ - เนบิวลา</title>
 
-<style>
-*{box-sizing:border-box}
-html,body{height:100%}
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        min-height: 100%;
+      }
 
-body{
-margin:0;
-font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;
-color:#e8ecff;
-background:
-radial-gradient(1200px 800px at 80% -10%, #1a1f5a 0%, transparent 60%),
-radial-gradient(1000px 700px at -10% 110%, #0a3b2f 0%, transparent 60%),
-#050814;
-overflow:hidden;
-}
+      body {
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Ubuntu,
+          sans-serif;
+        color: #e8ecff;
+        background:
+          radial-gradient(
+            1200px 800px at 80% -10%,
+            #1a1f5a 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            1000px 700px at -10% 110%,
+            #0a3b2f 0%,
+            transparent 60%
+          ),
+          #050814;
+        overflow: hidden;
+      }
 
-body::after{
-content:"";
-position:absolute;
-inset:0;
-min-height:100%;
-background:url("https://www.transparenttextures.com/patterns/stardust.png");
-opacity:.3;
-pointer-events:none;
-z-index:0;
-}
+      body::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        min-height: 100%;
+        background: url("https://www.transparenttextures.com/patterns/stardust.png");
+        opacity: 0.3;
+        pointer-events: none;
+        z-index: 0;
+      }
 
-/* navbar */
-.top-right{
-position:absolute;
-top:18px;
-right:24px;
-display:flex;
-gap:10px;
-z-index:10;
-}
+      /* navbar */
+      .top-right {
+        position: absolute;
+        top: 18px;
+        right: 24px;
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+      }
 
-.nav-top{
-text-decoration:none;
-color:#fff;
-padding:10px 18px;
-border-radius:14px;
-border:1px solid rgba(255,255,255,.12);
-background:linear-gradient(
-180deg,
-rgba(255,255,255,.08),
-rgba(255,255,255,.02)
-);
-font-size:15px;
-font-weight:600;
-display:flex;
-align-items:center;
-justify-content:center;
-min-width:95px;
-height:46px;
-transition:.2s;
-}
+      .nav-top {
+        text-decoration: none;
+        color: #fff;
+        padding: 10px 18px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.08),
+          rgba(255, 255, 255, 0.02)
+        );
+        font-size: 15px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 95px;
+        height: 46px;
+        transition: 0.2s;
+      }
 
-.nav-top:hover{
-transform:translateY(-2px);
-}
+      .nav-top:hover {
+        transform: translateY(-2px);
+      }
 
-.nav-top.active{
-background:#5e72eb;
-}
+      .nav-top.active {
+        background: #5e72eb;
+      }
 
-/* content */
-.wrap{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-padding:24px;
-}
+      /* content */
+      .wrap {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 24px;
+      }
 
-.progress{
-position:absolute;
-top:22px;
-left:24px;
-opacity:.75;
-font-size:15px;
-}
+      .progress {
+        position: absolute;
+        top: 22px;
+        left: 24px;
+        opacity: 0.75;
+        font-size: 15px;
+      }
 
-.image-box{
-height:280px;
-display:flex;
-align-items:center;
-justify-content:center;
-margin-bottom:18px;
-}
+      .image-box {
+        height: 280px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+      }
 
-.image-box img{
-max-height:100%;
-max-width:100%;
-animation:float 3s ease-in-out infinite;
-}
+      .image-box img {
+        max-height: 100%;
+        max-width: 100%;
+        animation: float 3s ease-in-out infinite;
+      }
 
-@keyframes float{
-0%{transform:translateY(0)}
-50%{transform:translateY(-10px)}
-100%{transform:translateY(0)}
-}
+      @keyframes float {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
 
-h1{
-font-size:32px;
-margin:0 0 12px;
-}
+      h1 {
+        font-size: 32px;
+        margin: 0 0 12px;
+      }
 
-p{
-font-size:16px;
-line-height:1.7;
-opacity:.95;
-max-width:760px;
-margin:auto;
-}
+      p {
+        font-size: 16px;
+        line-height: 1.7;
+        opacity: 0.95;
+        max-width: 760px;
+        margin: auto;
+      }
 
-.nav{
-margin-top:20px;
-display:flex;
-gap:12px;
-}
+      .nav {
+        margin-top: 20px;
+        display: flex;
+        gap: 12px;
+      }
 
-.nav button{
-padding:12px 18px;
-border:none;
-border-radius:14px;
-cursor:pointer;
-color:#fff;
-background:#5e72eb;
-font-size:16px;
-transition:.2s;
-}
+      .nav button {
+        padding: 12px 18px;
+        border: none;
+        border-radius: 14px;
+        cursor: pointer;
+        color: #fff;
+        background: #5e72eb;
+        font-size: 16px;
+        transition: 0.2s;
+      }
 
-.nav button:hover{
-transform:translateY(-2px);
-}
+      .nav button:hover {
+        transform: translateY(-2px);
+      }
 
-@media (max-width:768px){
+      @media (max-width: 768px) {
+        body {
+          padding: 14px;
+          overflow: auto;
+        }
 
-body{
-padding:14px;
-overflow:auto;
-}
+        .wrap {
+          padding: 16px;
+          justify-content: flex-start;
+          padding-top: 90px;
+        }
 
-.wrap{
-padding:16px;
-justify-content:flex-start;
-padding-top:90px;
-}
+        .top-right {
+          top: 14px;
+          right: 14px;
+          gap: 8px;
+        }
 
-.top-right{
-top:14px;
-right:14px;
-gap:8px;
-}
+        .nav-top {
+          min-width: 78px;
+          height: 40px;
+          font-size: 14px;
+          padding: 8px 12px;
+        }
 
-.nav-top{
-min-width:78px;
-height:40px;
-font-size:14px;
-padding:8px 12px;
-}
+        .progress {
+          top: 18px;
+          left: 14px;
+          font-size: 14px;
+        }
 
-.progress{
-top:18px;
-left:14px;
-font-size:14px;
-}
+        h1 {
+          font-size: 24px;
+        }
 
-h1{
-font-size:24px;
-}
+        p {
+          font-size: 15px;
+          line-height: 1.6;
+        }
 
-p{
-font-size:15px;
-line-height:1.6;
-}
+        .image-box {
+          height: 180px;
+        }
 
-.image-box{
-height:180px;
-}
+        .nav {
+          width: 100%;
+          flex-direction: column;
+        }
 
-.nav{
-width:100%;
-flex-direction:column;
-}
+        .nav button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
 
-.nav button{
-width:100%;
-}
-}
-</style>
-</head>
+  <body>
+    <div class="progress" id="progress">1 / 4</div>
 
-<body>
+    <div class="top-right">
+      <a href="../course.html" class="nav-top active">Course</a>
+      <a href="../quiz.html" class="nav-top">Quiz</a>
+    </div>
 
-<div class="progress" id="progress">1 / 4</div>
+    <section class="wrap">
+      <div class="card" id="card">
+        <div class="image-box">
+          <img id="img" src="../assets/nebular.png" />
+        </div>
 
-<div class="top-right">
-<a href="../course.html" class="nav-top active">Course</a>
-<a href="../quiz.html" class="nav-top">Quiz</a>
-</div>
+        <h1 id="title">เนบิวลาคืออะไร</h1>
 
-<section class="wrap">
+        <p id="desc">
+          เนบิวลา คือ กลุ่มก๊าซ ฝุ่นละออง และสสารต่าง ๆ ที่กระจายตัวอยู่ในอวกาศ
+          มีขนาดใหญ่มากและมีรูปร่างหลากหลาย บางแห่งเป็นแหล่งกำเนิดดาวฤกษ์ใหม่
+          ขณะที่บางแห่งเป็นซากที่เหลือจากการสิ้นสุดชีวิตของดาวฤกษ์
+        </p>
+      </div>
 
-<div class="card" id="card">
+      <div class="nav">
+        <button onclick="prevSlide()">⬅️ ก่อนหน้า</button>
+        <button onclick="nextSlide()">ถัดไป ➡️</button>
+      </div>
+    </section>
 
-<div class="image-box">
-<img id="img" src="assets/space1.png">
-</div>
+    <script>
+      const slides = [
+        {
+          title: "เนบิวลาคืออะไร",
+          img: "../assets/nebular.png",
+          desc: "เนบิวลา คือ กลุ่มก๊าซ ฝุ่นละออง และสสารต่าง ๆ ที่กระจายตัวอยู่ในอวกาศ มีขนาดใหญ่มากและมีรูปร่างหลากหลาย บางแห่งเป็นแหล่งกำเนิดดาวฤกษ์ใหม่ ขณะที่บางแห่งเป็นซากที่เหลือจากการสิ้นสุดชีวิตของดาวฤกษ์",
+        },
+        {
+          title: "องค์ประกอบของเนบิวลา",
+          img: "../assets/nebular.png",
+          desc: "เนบิวลาส่วนใหญ่ประกอบด้วยก๊าซไฮโดรเจนและฮีเลียม ซึ่งเป็นธาตุหลักในเอกภพ รวมถึงฝุ่นอวกาศที่ประกอบด้วยธาตุต่าง ๆ เช่น คาร์บอน ซิลิกอน และเหล็ก สสารเหล่านี้เป็นวัตถุดิบสำคัญในการก่อกำเนิดดาวและระบบดาวเคราะห์",
+        },
+        {
+          title: "การเกิดเนบิวลา",
+          img: "../assets/nebular.png",
+          desc: "เนบิวลาสามารถเกิดได้หลายรูปแบบ เช่น การรวมตัวของก๊าซและฝุ่นในอวกาศ หรือเกิดจากการระเบิดของดาวฤกษ์มวลมากเมื่อสิ้นอายุขัย ทำให้สสารกระจายออกไปเป็นกลุ่มเมฆขนาดใหญ่",
+        },
+        {
+          title: "เนบิวลากับการเกิดดาวฤกษ์",
+          img: "../assets/nebular.png",
+          desc: "ภายในเนบิวลาบางแห่ง สสารจะรวมตัวกันด้วยแรงโน้มถ่วงจนหนาแน่นมากขึ้น เมื่ออุณหภูมิและความดันสูงพอ จะเกิดเป็นดาวฤกษ์ดวงใหม่ จึงกล่าวได้ว่าเนบิวลาเป็นแหล่งกำเนิดดาวฤกษ์จำนวนมาก",
+        },
+        {
+          title: "ประเภทของเนบิวลา",
+          img: "../assets/nebular.png",
+          desc: "นักดาราศาสตร์แบ่งเนบิวลาออกเป็นหลายประเภท เช่น เนบิวลาสะท้อนแสง เนบิวลาปล่อยแสง เนบิวลามืด และเนบิวลาดาวเคราะห์ แต่ละประเภทมีลักษณะการมองเห็นและกระบวนการเกิดแตกต่างกัน",
+        },
+        {
+          title: "เนบิวลาสะท้อนแสง",
+          img: "../assets/nebular2.png",
+          desc: "เนบิวลาสะท้อนแสงไม่สามารถเปล่งแสงเองได้ แต่จะสะท้อนแสงจากดาวฤกษ์ใกล้เคียง จึงมักมองเห็นเป็นสีฟ้าหรือสีขาวสว่างในภาพถ่ายทางดาราศาสตร์",
+        },
+        {
+          title: "เนบิวลาปล่อยแสง",
+          img: "../assets/nebular3.png",
+          desc: "เนบิวลาประเภทนี้ได้รับพลังงานจากดาวฤกษ์ร้อนใกล้เคียง ทำให้ก๊าซภายในเรืองแสงออกมาเอง มักเห็นเป็นสีแดง ชมพู หรือม่วง และมักเป็นบริเวณที่มีการเกิดดาวฤกษ์ใหม่",
+        },
+        {
+          title: "เนบิวลามืด",
+          img: "../assets/nebular4.png",
+          desc: "เนบิวลามืดเป็นกลุ่มฝุ่นหนาแน่นที่บดบังแสงจากดาวหรือเนบิวลาที่อยู่ด้านหลัง จึงมองเห็นเป็นเงาดำบนท้องฟ้า แม้มองไม่สว่าง แต่เป็นบริเวณสำคัญของการก่อตัวดาวฤกษ์",
+        },
+        {
+          title: "เนบิวลาดาวเคราะห์",
+          img: "../assets/nebular5.png",
+          desc: "เนบิวลาดาวเคราะห์เกิดจากดาวฤกษ์มวลปานกลางปล่อยชั้นก๊าซภายนอกออกเมื่อใกล้สิ้นอายุขัย เหลือแกนกลางร้อนอยู่ตรงกลาง ชื่อดาวเคราะห์เป็นเพียงชื่อเรียกจากรูปลักษณ์ ไม่ได้เกี่ยวกับดาวเคราะห์จริง",
+        },
+        {
+          title: "ความสำคัญของเนบิวลา",
+          img: "../assets/nebular.png",
+          desc: "การศึกษาเนบิวลาช่วยให้มนุษย์เข้าใจกระบวนการเกิดดาวฤกษ์ วงจรชีวิตของดาว การกระจายตัวของธาตุในเอกภพ และต้นกำเนิดของระบบดาวต่าง ๆ รวมถึงระบบสุริยะของเรา",
+        },
+      ];
 
-<h1 id="title">เนบิวลาคืออะไร</h1>
+      let index = 0;
 
-<p id="desc">
-เนบิวลา คือ กลุ่มก๊าซ ฝุ่นละออง และสสารต่าง ๆ ที่กระจายตัวอยู่ในอวกาศ มีขนาดใหญ่มากและมีรูปร่างหลากหลาย บางแห่งเป็นแหล่งกำเนิดดาวฤกษ์ใหม่ ขณะที่บางแห่งเป็นซากที่เหลือจากการสิ้นสุดชีวิตของดาวฤกษ์
-</p>
+      function render() {
+        document.getElementById("title").innerText = slides[index].title;
+        document.getElementById("desc").innerText = slides[index].desc;
+        document.getElementById("img").src = slides[index].img;
+        document.getElementById("progress").innerText =
+          index + 1 + " / " + slides.length;
 
-</div>
+        const nextBtn = document.querySelectorAll(".nav button")[1];
 
-<div class="nav">
-<button onclick="prevSlide()">⬅️ ก่อนหน้า</button>
-<button onclick="nextSlide()">ถัดไป ➡️</button>
-</div>
+        if (index === slides.length - 1) {
+          nextBtn.innerText = "กลับหน้า Course";
+        } else {
+          nextBtn.innerText = "ถัดไป ➡️";
+        }
+      }
 
-</section>
+      function nextSlide() {
+        if (index < slides.length - 1) {
+          index++;
+          render();
+        } else {
+          window.location.href = "../course.html";
+        }
+      }
 
-<script>
-const slides = [
-{
-title:"เนบิวลาคืออะไร",
-img:"assets/nebula1.png",
-desc:"เนบิวลา คือ กลุ่มก๊าซ ฝุ่นละออง และสสารต่าง ๆ ที่กระจายตัวอยู่ในอวกาศ มีขนาดใหญ่มากและมีรูปร่างหลากหลาย บางแห่งเป็นแหล่งกำเนิดดาวฤกษ์ใหม่ ขณะที่บางแห่งเป็นซากที่เหลือจากการสิ้นสุดชีวิตของดาวฤกษ์"
-},
-{
-title:"องค์ประกอบของเนบิวลา",
-img:"assets/nebula2.png",
-desc:"เนบิวลาส่วนใหญ่ประกอบด้วยก๊าซไฮโดรเจนและฮีเลียม ซึ่งเป็นธาตุหลักในเอกภพ รวมถึงฝุ่นอวกาศที่ประกอบด้วยธาตุต่าง ๆ เช่น คาร์บอน ซิลิกอน และเหล็ก สสารเหล่านี้เป็นวัตถุดิบสำคัญในการก่อกำเนิดดาวและระบบดาวเคราะห์"
-},
-{
-title:"การเกิดเนบิวลา",
-img:"assets/nebula3.png",
-desc:"เนบิวลาสามารถเกิดได้หลายรูปแบบ เช่น การรวมตัวของก๊าซและฝุ่นในอวกาศ หรือเกิดจากการระเบิดของดาวฤกษ์มวลมากเมื่อสิ้นอายุขัย ทำให้สสารกระจายออกไปเป็นกลุ่มเมฆขนาดใหญ่"
-},
-{
-title:"เนบิวลากับการเกิดดาวฤกษ์",
-img:"assets/nebula4.png",
-desc:"ภายในเนบิวลาบางแห่ง สสารจะรวมตัวกันด้วยแรงโน้มถ่วงจนหนาแน่นมากขึ้น เมื่ออุณหภูมิและความดันสูงพอ จะเกิดเป็นดาวฤกษ์ดวงใหม่ จึงกล่าวได้ว่าเนบิวลาเป็นแหล่งกำเนิดดาวฤกษ์จำนวนมาก"
-},
-{
-title:"ประเภทของเนบิวลา",
-img:"assets/nebula5.png",
-desc:"นักดาราศาสตร์แบ่งเนบิวลาออกเป็นหลายประเภท เช่น เนบิวลาสะท้อนแสง เนบิวลาปล่อยแสง เนบิวลามืด และเนบิวลาดาวเคราะห์ แต่ละประเภทมีลักษณะการมองเห็นและกระบวนการเกิดแตกต่างกัน"
-},
-{
-title:"เนบิวลาสะท้อนแสง",
-img:"assets/nebula6.png",
-desc:"เนบิวลาสะท้อนแสงไม่สามารถเปล่งแสงเองได้ แต่จะสะท้อนแสงจากดาวฤกษ์ใกล้เคียง จึงมักมองเห็นเป็นสีฟ้าหรือสีขาวสว่างในภาพถ่ายทางดาราศาสตร์"
-},
-{
-title:"เนบิวลาปล่อยแสง",
-img:"assets/nebula7.png",
-desc:"เนบิวลาประเภทนี้ได้รับพลังงานจากดาวฤกษ์ร้อนใกล้เคียง ทำให้ก๊าซภายในเรืองแสงออกมาเอง มักเห็นเป็นสีแดง ชมพู หรือม่วง และมักเป็นบริเวณที่มีการเกิดดาวฤกษ์ใหม่"
-},
-{
-title:"เนบิวลามืด",
-img:"assets/nebula8.png",
-desc:"เนบิวลามืดเป็นกลุ่มฝุ่นหนาแน่นที่บดบังแสงจากดาวหรือเนบิวลาที่อยู่ด้านหลัง จึงมองเห็นเป็นเงาดำบนท้องฟ้า แม้มองไม่สว่าง แต่เป็นบริเวณสำคัญของการก่อตัวดาวฤกษ์"
-},
-{
-title:"เนบิวลาดาวเคราะห์",
-img:"assets/nebula9.png",
-desc:"เนบิวลาดาวเคราะห์เกิดจากดาวฤกษ์มวลปานกลางปล่อยชั้นก๊าซภายนอกออกเมื่อใกล้สิ้นอายุขัย เหลือแกนกลางร้อนอยู่ตรงกลาง ชื่อดาวเคราะห์เป็นเพียงชื่อเรียกจากรูปลักษณ์ ไม่ได้เกี่ยวกับดาวเคราะห์จริง"
-},
-{
-title:"ความสำคัญของเนบิวลา",
-img:"assets/nebula10.png",
-desc:"การศึกษาเนบิวลาช่วยให้มนุษย์เข้าใจกระบวนการเกิดดาวฤกษ์ วงจรชีวิตของดาว การกระจายตัวของธาตุในเอกภพ และต้นกำเนิดของระบบดาวต่าง ๆ รวมถึงระบบสุริยะของเรา"
-}
-];
+      function prevSlide() {
+        if (index > 0) {
+          index--;
+          render();
+        }
+      }
 
-let index = 0;
-
-function render(){
-document.getElementById("title").innerText = slides[index].title;
-document.getElementById("desc").innerText = slides[index].desc;
-document.getElementById("img").src = slides[index].img;
-document.getElementById("progress").innerText = (index+1) + " / " + slides.length;
-
-const nextBtn = document.querySelectorAll(".nav button")[1];
-
-if(index === slides.length - 1){
-nextBtn.innerText = "กลับหน้า Course";
-}else{
-nextBtn.innerText = "ถัดไป ➡️";
-}
-}
-
-function nextSlide(){
-if(index < slides.length - 1){
-index++;
-render();
-}else{
-window.location.href = "../course.html";
-}
-}
-
-function prevSlide(){
-if(index > 0){
-index--;
-render();
-}
-}
-
-render();
-</script>
-
-</body>
+      render();
+    </script>
+  </body>
 </html>

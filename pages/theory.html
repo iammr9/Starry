@@ -1,325 +1,350 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>StarZ - ทฤษฎีการกำเนิดเอกภพ</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <title>StarZ - ทฤษฎีการกำเนิดเอกภพ</title>
 
-<style>
-*{box-sizing:border-box}
-html,body{height:100%}
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        min-height: 100%;
+      }
 
-body{
-margin:0;
-font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;
-color:#e8ecff;
-background:
-radial-gradient(1200px 800px at 80% -10%, #1a1f5a 0%, transparent 60%),
-radial-gradient(1000px 700px at -10% 110%, #0a3b2f 0%, transparent 60%),
-#050814;
-overflow:hidden;
-}
+      body {
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Ubuntu,
+          sans-serif;
+        color: #e8ecff;
+        background:
+          radial-gradient(
+            1200px 800px at 80% -10%,
+            #1a1f5a 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            1000px 700px at -10% 110%,
+            #0a3b2f 0%,
+            transparent 60%
+          ),
+          #050814;
+        overflow: hidden;
+      }
 
-body::after{
-content:"";
-position:absolute;
-inset:0;
-min-height:100%;
-background:url("https://www.transparenttextures.com/patterns/stardust.png");
-opacity:.3;
-pointer-events:none;
-z-index:0;
-}
+      body::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        min-height: 100%;
+        background: url("https://www.transparenttextures.com/patterns/stardust.png");
+        opacity: 0.3;
+        pointer-events: none;
+        z-index: 0;
+      }
 
-/* navbar */
-.top-right{
-position:absolute;
-top:18px;
-right:24px;
-display:flex;
-gap:10px;
-z-index:10;
-}
+      /* navbar */
+      .top-right {
+        position: absolute;
+        top: 18px;
+        right: 24px;
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+      }
 
-.nav-top{
-text-decoration:none;
-color:#fff;
-padding:10px 18px;
-border-radius:14px;
-border:1px solid rgba(255,255,255,.12);
-background:linear-gradient(
-180deg,
-rgba(255,255,255,.08),
-rgba(255,255,255,.02)
-);
-font-size:15px;
-font-weight:600;
-display:flex;
-align-items:center;
-justify-content:center;
-min-width:95px;
-height:46px;
-transition:.2s;
-}
+      .nav-top {
+        text-decoration: none;
+        color: #fff;
+        padding: 10px 18px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.08),
+          rgba(255, 255, 255, 0.02)
+        );
+        font-size: 15px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 95px;
+        height: 46px;
+        transition: 0.2s;
+      }
 
-.nav-top:hover{
-transform:translateY(-2px);
-}
+      .nav-top:hover {
+        transform: translateY(-2px);
+      }
 
-.nav-top.active{
-background:#5e72eb;
-}
+      .nav-top.active {
+        background: #5e72eb;
+      }
 
-/* content */
-.wrap{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-padding:24px;
-}
+      /* content */
+      .wrap {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 24px;
+      }
 
-.progress{
-position:absolute;
-top:22px;
-left:24px;
-opacity:.75;
-font-size:15px;
-}
+      .progress {
+        position: absolute;
+        top: 22px;
+        left: 24px;
+        opacity: 0.75;
+        font-size: 15px;
+      }
 
-.image-box{
-height:280px;
-display:flex;
-align-items:center;
-justify-content:center;
-margin-bottom:18px;
-}
+      .image-box {
+        height: 280px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+      }
 
-.image-box img{
-max-height:100%;
-max-width:100%;
-animation:float 3s ease-in-out infinite;
-}
+      .image-box img {
+        max-height: 100%;
+        max-width: 100%;
+        animation: float 3s ease-in-out infinite;
+      }
 
-@keyframes float{
-0%{transform:translateY(0)}
-50%{transform:translateY(-10px)}
-100%{transform:translateY(0)}
-}
+      @keyframes float {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
 
-h1{
-font-size:32px;
-margin:0 0 12px;
-}
+      h1 {
+        font-size: 32px;
+        margin: 0 0 12px;
+      }
 
-p{
-font-size:16px;
-line-height:1.7;
-opacity:.95;
-max-width:760px;
-margin:auto;
-}
+      p {
+        font-size: 16px;
+        line-height: 1.7;
+        opacity: 0.95;
+        max-width: 760px;
+        margin: auto;
+      }
 
-.nav{
-margin-top:20px;
-display:flex;
-gap:12px;
-}
+      .nav {
+        margin-top: 20px;
+        display: flex;
+        gap: 12px;
+      }
 
-.nav button{
-padding:12px 18px;
-border:none;
-border-radius:14px;
-cursor:pointer;
-color:#fff;
-background:#5e72eb;
-font-size:16px;
-transition:.2s;
-}
+      .nav button {
+        padding: 12px 18px;
+        border: none;
+        border-radius: 14px;
+        cursor: pointer;
+        color: #fff;
+        background: #5e72eb;
+        font-size: 16px;
+        transition: 0.2s;
+      }
 
-.nav button:hover{
-transform:translateY(-2px);
-}
+      .nav button:hover {
+        transform: translateY(-2px);
+      }
 
-@media (max-width:768px){
+      @media (max-width: 768px) {
+        body {
+          padding: 14px;
+          overflow: auto;
+        }
 
-body{
-padding:14px;
-overflow:auto;
-}
+        .wrap {
+          padding: 16px;
+          justify-content: flex-start;
+          padding-top: 90px;
+        }
 
-.wrap{
-padding:16px;
-justify-content:flex-start;
-padding-top:90px;
-}
+        .top-right {
+          top: 14px;
+          right: 14px;
+          gap: 8px;
+        }
 
-.top-right{
-top:14px;
-right:14px;
-gap:8px;
-}
+        .nav-top {
+          min-width: 78px;
+          height: 40px;
+          font-size: 14px;
+          padding: 8px 12px;
+        }
 
-.nav-top{
-min-width:78px;
-height:40px;
-font-size:14px;
-padding:8px 12px;
-}
+        .progress {
+          top: 18px;
+          left: 14px;
+          font-size: 14px;
+        }
 
-.progress{
-top:18px;
-left:14px;
-font-size:14px;
-}
+        h1 {
+          font-size: 24px;
+        }
 
-h1{
-font-size:24px;
-}
+        p {
+          font-size: 15px;
+          line-height: 1.6;
+        }
 
-p{
-font-size:15px;
-line-height:1.6;
-}
+        .image-box {
+          height: 180px;
+        }
 
-.image-box{
-height:180px;
-}
+        .nav {
+          width: 100%;
+          flex-direction: column;
+        }
 
-.nav{
-width:100%;
-flex-direction:column;
-}
+        .nav button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
 
-.nav button{
-width:100%;
-}
-}
-</style>
-</head>
+  <body>
+    <div class="progress" id="progress">1 / 4</div>
 
-<body>
+    <div class="top-right">
+      <a href="../course.html" class="nav-top active">Course</a>
+      <a href="../quiz.html" class="nav-top">Quiz</a>
+    </div>
 
-<div class="progress" id="progress">1 / 4</div>
+    <section class="wrap">
+      <div class="card" id="card">
+        <div class="image-box">
+          <img id="img" src="../assets/bigbang.jpg" />
+        </div>
 
-<div class="top-right">
-<a href="../course.html" class="nav-top active">Course</a>
-<a href="../quiz.html" class="nav-top">Quiz</a>
-</div>
+        <h1 id="title">ทฤษฎีการกำเนิดเอกภพ</h1>
 
-<section class="wrap">
+        <p id="desc">
+          นักวิทยาศาสตร์เชื่อว่าเอกภพไม่ได้มีอยู่ตลอดไป แต่มีจุดเริ่มต้น
+          ทฤษฎีที่ได้รับการยอมรับมากที่สุดในปัจจุบันคือ ทฤษฎีบิกแบง (Big Bang
+          Theory) ซึ่งอธิบายว่าเอกภพเริ่มจากสภาวะที่เล็กมาก หนาแน่นสูงมาก
+          และร้อนจัด ก่อนจะขยายตัวจนเกิดเป็นเอกภพขนาดมหาศาลในปัจจุบัน
+        </p>
+      </div>
 
-<div class="card" id="card">
+      <div class="nav">
+        <button onclick="prevSlide()">⬅️ ก่อนหน้า</button>
+        <button onclick="nextSlide()">ถัดไป ➡️</button>
+      </div>
+    </section>
 
-<div class="image-box">
-<img id="img" src="assets/space1.png">
-</div>
+    <script>
+      const slides = [
+        {
+          title: "ทฤษฎีการกำเนิดเอกภพ",
+          img: "../assets/bigbang.jpg",
+          desc: "นักวิทยาศาสตร์เชื่อว่าเอกภพไม่ได้มีอยู่ตลอดไป แต่มีจุดเริ่มต้น ทฤษฎีที่ได้รับการยอมรับมากที่สุดในปัจจุบันคือ ทฤษฎีบิกแบง (Big Bang Theory) ซึ่งอธิบายว่าเอกภพเริ่มจากสภาวะที่เล็กมาก หนาแน่นสูงมาก และร้อนจัด ก่อนจะขยายตัวจนเกิดเป็นเอกภพขนาดมหาศาลในปัจจุบัน",
+        },
+        {
+          title: "ก่อนเกิดบิกแบง",
+          img: "../assets/bigbang2.jpg",
+          desc: "ในทางวิทยาศาสตร์ยังไม่สามารถอธิบายได้ชัดเจนว่า ก่อนการเกิดบิกแบงมีอะไรอยู่ หรือเวลาและอวกาศมีลักษณะอย่างไร เพราะกฎฟิสิกส์ที่เรารู้จักอาจยังใช้ไม่ได้ในช่วงเวลานั้น จึงยังเป็นเรื่องที่นักวิทยาศาสตร์ศึกษาต่อไป",
+        },
+        {
+          title: "ช่วงเวลาแรกเริ่ม",
+          img: "../assets/bigbang2.jpg",
+          desc: "หลังการเกิดบิกแบงเพียงเสี้ยววินาทีแรก เอกภพร้อนจัดและเต็มไปด้วยพลังงานมหาศาล มีการขยายตัวอย่างรวดเร็วมาก เรียกว่า Inflation ทำให้เอกภพมีขนาดใหญ่ขึ้นอย่างมหาศาลในเวลาอันสั้น",
+        },
+        {
+          title: "การเกิดอนุภาคพื้นฐาน",
+          img: "../assets/bigbang2.jpg",
+          desc: "เมื่อเอกภพเริ่มเย็นตัวลง พลังงานจำนวนมากเปลี่ยนเป็นอนุภาคพื้นฐาน เช่น ควาร์ก อิเล็กตรอน และอนุภาคอื่น ๆ ต่อมาควาร์กรวมตัวกันเกิดเป็นโปรตอนและนิวตรอน ซึ่งเป็นส่วนประกอบสำคัญของอะตอม",
+        },
+        {
+          title: "การเกิดธาตุแรกของเอกภพ",
+          img: "../assets/bigbang2.jpg",
+          desc: "หลังบิกแบงไม่กี่นาที โปรตอนและนิวตรอนรวมตัวกันเป็นนิวเคลียสของธาตุเบา เช่น ไฮโดรเจน ฮีเลียม และลิเทียมเล็กน้อย กระบวนการนี้เรียกว่า Big Bang Nucleosynthesis",
+        },
+        {
+          title: "การเกิดอะตอม",
+          img: "../assets/bigbang2.jpg",
+          desc: "เมื่อเวลาผ่านไปประมาณ 380,000 ปี เอกภพเย็นลงมากพอให้อิเล็กตรอนจับกับนิวเคลียส กลายเป็นอะตอมแรก ส่วนใหญ่คือไฮโดรเจนและฮีเลียม แสงจึงสามารถเดินทางได้อย่างอิสระเป็นครั้งแรก",
+        },
+        {
+          title: "รังสีไมโครเวฟพื้นหลัง",
+          img: "../assets/bigbang2.jpg",
+          desc: "แสงที่หลงเหลือจากช่วงเริ่มต้นของเอกภพยังคงกระจายอยู่ทั่วจักรวาลในปัจจุบัน เรียกว่า รังสีไมโครเวฟพื้นหลังของเอกภพ หรือ Cosmic Microwave Background ซึ่งเป็นหลักฐานสำคัญที่สนับสนุนทฤษฎีบิกแบง",
+        },
+        {
+          title: "การเกิดดาวและกาแล็กซี",
+          img: "../assets/bigbang2.jpg",
+          desc: "หลังจากเกิดอะตอมจำนวนมาก ก๊าซในเอกภพเริ่มรวมตัวกันด้วยแรงโน้มถ่วง เกิดเป็นกลุ่มเมฆก๊าซขนาดใหญ่ ต่อมากลายเป็นดาวฤกษ์รุ่นแรก และรวมตัวกันเป็นกาแล็กซีจำนวนมหาศาล",
+        },
+        {
+          title: "เอกภพยังขยายตัวอยู่",
+          img: "../assets/bigbang2.jpg",
+          desc: "นักดาราศาสตร์ค้นพบว่ากาแล็กซีส่วนใหญ่กำลังเคลื่อนที่ห่างออกจากกัน แสดงว่าเอกภพยังคงขยายตัวอยู่จนถึงปัจจุบัน ยิ่งอยู่ไกลมากเท่าไร ก็ยิ่งเคลื่อนที่ออกห่างเร็วมากขึ้น",
+        },
+        {
+          title: "ความสำคัญของทฤษฎีบิกแบง",
+          img: "../assets/bigbang2.jpg",
+          desc: "ทฤษฎีบิกแบงช่วยอธิบายต้นกำเนิดของเอกภพ การเกิดสสาร ดาวฤกษ์ กาแล็กซี และวิวัฒนาการของจักรวาลตลอดเวลาหลายพันล้านปี ถือเป็นพื้นฐานสำคัญของดาราศาสตร์และฟิสิกส์สมัยใหม่",
+        },
+      ];
 
-<h1 id="title">ทฤษฎีการกำเนิดเอกภพ</h1>
+      let index = 0;
 
-<p id="desc">
-นักวิทยาศาสตร์เชื่อว่าเอกภพไม่ได้มีอยู่ตลอดไป แต่มีจุดเริ่มต้น ทฤษฎีที่ได้รับการยอมรับมากที่สุดในปัจจุบันคือ ทฤษฎีบิกแบง (Big Bang Theory) ซึ่งอธิบายว่าเอกภพเริ่มจากสภาวะที่เล็กมาก หนาแน่นสูงมาก และร้อนจัด ก่อนจะขยายตัวจนเกิดเป็นเอกภพขนาดมหาศาลในปัจจุบัน
-</p>
+      function render() {
+        document.getElementById("title").innerText = slides[index].title;
+        document.getElementById("desc").innerText = slides[index].desc;
+        document.getElementById("img").src = slides[index].img;
+        document.getElementById("progress").innerText =
+          index + 1 + " / " + slides.length;
 
-</div>
+        const nextBtn = document.querySelectorAll(".nav button")[1];
 
-<div class="nav">
-<button onclick="prevSlide()">⬅️ ก่อนหน้า</button>
-<button onclick="nextSlide()">ถัดไป ➡️</button>
-</div>
+        if (index === slides.length - 1) {
+          nextBtn.innerText = "กลับหน้า Course";
+        } else {
+          nextBtn.innerText = "ถัดไป ➡️";
+        }
+      }
 
-</section>
+      function nextSlide() {
+        if (index < slides.length - 1) {
+          index++;
+          render();
+        } else {
+          window.location.href = "../course.html";
+        }
+      }
 
-<script>
-const slides = [
-{
-title:"ทฤษฎีการกำเนิดเอกภพ",
-img:"assets/bigbang1.png",
-desc:"นักวิทยาศาสตร์เชื่อว่าเอกภพไม่ได้มีอยู่ตลอดไป แต่มีจุดเริ่มต้น ทฤษฎีที่ได้รับการยอมรับมากที่สุดในปัจจุบันคือ ทฤษฎีบิกแบง (Big Bang Theory) ซึ่งอธิบายว่าเอกภพเริ่มจากสภาวะที่เล็กมาก หนาแน่นสูงมาก และร้อนจัด ก่อนจะขยายตัวจนเกิดเป็นเอกภพขนาดมหาศาลในปัจจุบัน"
-},
-{
-title:"ก่อนเกิดบิกแบง",
-img:"assets/bigbang2.png",
-desc:"ในทางวิทยาศาสตร์ยังไม่สามารถอธิบายได้ชัดเจนว่า ก่อนการเกิดบิกแบงมีอะไรอยู่ หรือเวลาและอวกาศมีลักษณะอย่างไร เพราะกฎฟิสิกส์ที่เรารู้จักอาจยังใช้ไม่ได้ในช่วงเวลานั้น จึงยังเป็นเรื่องที่นักวิทยาศาสตร์ศึกษาต่อไป"
-},
-{
-title:"ช่วงเวลาแรกเริ่ม",
-img:"assets/bigbang3.png",
-desc:"หลังการเกิดบิกแบงเพียงเสี้ยววินาทีแรก เอกภพร้อนจัดและเต็มไปด้วยพลังงานมหาศาล มีการขยายตัวอย่างรวดเร็วมาก เรียกว่า Inflation ทำให้เอกภพมีขนาดใหญ่ขึ้นอย่างมหาศาลในเวลาอันสั้น"
-},
-{
-title:"การเกิดอนุภาคพื้นฐาน",
-img:"assets/bigbang4.png",
-desc:"เมื่อเอกภพเริ่มเย็นตัวลง พลังงานจำนวนมากเปลี่ยนเป็นอนุภาคพื้นฐาน เช่น ควาร์ก อิเล็กตรอน และอนุภาคอื่น ๆ ต่อมาควาร์กรวมตัวกันเกิดเป็นโปรตอนและนิวตรอน ซึ่งเป็นส่วนประกอบสำคัญของอะตอม"
-},
-{
-title:"การเกิดธาตุแรกของเอกภพ",
-img:"assets/bigbang5.png",
-desc:"หลังบิกแบงไม่กี่นาที โปรตอนและนิวตรอนรวมตัวกันเป็นนิวเคลียสของธาตุเบา เช่น ไฮโดรเจน ฮีเลียม และลิเทียมเล็กน้อย กระบวนการนี้เรียกว่า Big Bang Nucleosynthesis"
-},
-{
-title:"การเกิดอะตอม",
-img:"assets/bigbang6.png",
-desc:"เมื่อเวลาผ่านไปประมาณ 380,000 ปี เอกภพเย็นลงมากพอให้อิเล็กตรอนจับกับนิวเคลียส กลายเป็นอะตอมแรก ส่วนใหญ่คือไฮโดรเจนและฮีเลียม แสงจึงสามารถเดินทางได้อย่างอิสระเป็นครั้งแรก"
-},
-{
-title:"รังสีไมโครเวฟพื้นหลัง",
-img:"assets/bigbang7.png",
-desc:"แสงที่หลงเหลือจากช่วงเริ่มต้นของเอกภพยังคงกระจายอยู่ทั่วจักรวาลในปัจจุบัน เรียกว่า รังสีไมโครเวฟพื้นหลังของเอกภพ หรือ Cosmic Microwave Background ซึ่งเป็นหลักฐานสำคัญที่สนับสนุนทฤษฎีบิกแบง"
-},
-{
-title:"การเกิดดาวและกาแล็กซี",
-img:"assets/bigbang8.png",
-desc:"หลังจากเกิดอะตอมจำนวนมาก ก๊าซในเอกภพเริ่มรวมตัวกันด้วยแรงโน้มถ่วง เกิดเป็นกลุ่มเมฆก๊าซขนาดใหญ่ ต่อมากลายเป็นดาวฤกษ์รุ่นแรก และรวมตัวกันเป็นกาแล็กซีจำนวนมหาศาล"
-},
-{
-title:"เอกภพยังขยายตัวอยู่",
-img:"assets/bigbang9.png",
-desc:"นักดาราศาสตร์ค้นพบว่ากาแล็กซีส่วนใหญ่กำลังเคลื่อนที่ห่างออกจากกัน แสดงว่าเอกภพยังคงขยายตัวอยู่จนถึงปัจจุบัน ยิ่งอยู่ไกลมากเท่าไร ก็ยิ่งเคลื่อนที่ออกห่างเร็วมากขึ้น"
-},
-{
-title:"ความสำคัญของทฤษฎีบิกแบง",
-img:"assets/bigbang10.png",
-desc:"ทฤษฎีบิกแบงช่วยอธิบายต้นกำเนิดของเอกภพ การเกิดสสาร ดาวฤกษ์ กาแล็กซี และวิวัฒนาการของจักรวาลตลอดเวลาหลายพันล้านปี ถือเป็นพื้นฐานสำคัญของดาราศาสตร์และฟิสิกส์สมัยใหม่"
-}
-];
+      function prevSlide() {
+        if (index > 0) {
+          index--;
+          render();
+        }
+      }
 
-let index = 0;
-
-function render(){
-document.getElementById("title").innerText = slides[index].title;
-document.getElementById("desc").innerText = slides[index].desc;
-document.getElementById("img").src = slides[index].img;
-document.getElementById("progress").innerText = (index+1) + " / " + slides.length;
-
-const nextBtn = document.querySelectorAll(".nav button")[1];
-
-if(index === slides.length - 1){
-nextBtn.innerText = "กลับหน้า Course";
-}else{
-nextBtn.innerText = "ถัดไป ➡️";
-}
-}
-
-function nextSlide(){
-if(index < slides.length - 1){
-index++;
-render();
-}else{
-window.location.href = "../course.html";
-}
-}
-
-function prevSlide(){
-if(index > 0){
-index--;
-render();
-}
-}
-
-render();
-</script>
-
-</body>
+      render();
+    </script>
+  </body>
 </html>
