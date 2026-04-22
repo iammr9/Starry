@@ -1,338 +1,643 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>StarZ Quiz</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <title>StarZ Quiz</title>
 
-<style>
-*{box-sizing:border-box}
-html,body{height:100%}
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        min-height: 100%;
+      }
 
-body{
-margin:0;
-font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;
-color:#e8ecff;
-background:
-radial-gradient(1200px 800px at 80% -10%, #1a1f5a 0%, transparent 60%),
-radial-gradient(1000px 700px at -10% 110%, #0a3b2f 0%, transparent 60%),
-#050814;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
-overflow:hidden;
-}
+      body {
+        margin: 0;
+        position: relative;
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Ubuntu,
+          sans-serif;
+        color: #e8ecff;
+        background:
+          radial-gradient(
+            1200px 800px at 80% -10%,
+            #1a1f5a 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            1000px 700px at -10% 110%,
+            #0a3b2f 0%,
+            transparent 60%
+          ),
+          #050814;
+        overflow: hidden;
+        padding: 20px;
+      }
 
-body::after{
-content:"";
-position:absolute;
-inset:0;
-min-height:100%;
-background:url("https://www.transparenttextures.com/patterns/stardust.png");
-opacity:.3;
-pointer-events:none;
-z-index:0;
-}
+      body::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        min-height: 100%;
+        background: url("https://www.transparenttextures.com/patterns/stardust.png");
+        opacity: 0.3;
+        pointer-events: none;
+        z-index: 0;
+      }
 
-.top-right{
-position:absolute;
-top:18px;
-right:24px;
-display:flex;
-gap:10px;
-z-index:10;
-}
+      .top-right {
+        position: absolute;
+        top: 18px;
+        right: 24px;
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+      }
 
-.nav-top{
-text-decoration:none;
-color:#fff;
-padding:10px 18px;
-border-radius:14px;
-border:1px solid rgba(255,255,255,.12);
-background:linear-gradient(
-180deg,
-rgba(255,255,255,.08),
-rgba(255,255,255,.02)
-);
-font-size:15px;
-font-weight:600;
-display:flex;
-align-items:center;
-justify-content:center;
-min-width:95px;
-height:46px;
-transition:.2s;
-}
+      .nav-top {
+        text-decoration: none;
+        color: #fff;
+        padding: 10px 18px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.08),
+          rgba(255, 255, 255, 0.02)
+        );
+        font-size: 15px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 95px;
+        height: 46px;
+        transition: 0.2s;
+      }
 
-.nav-top:hover{
-transform:translateY(-2px);
-}
+      .nav-top:hover {
+        transform: translateY(-2px);
+      }
 
-.nav-top.active{
-background:#5e72eb;
-}
+      .nav-top.active {
+        background: #5e72eb;
+      }
 
-.card{
-width:100%;
-max-width:700px;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.1);
-padding:30px;
-border-radius:20px;
-z-index:1;
-}
+      .card {
+        width: 100%;
+        max-width: 620px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 28px;
+        z-index: 1;
+        margin: 120px auto 0;
+        position: relative;
+      }
 
-h1{text-align:center;margin-top:0}
-.progress{
-opacity:.8;
-margin-bottom:20px;
-}
+      h1 {
+        text-align: center;
+        margin-top: 0;
+      }
+      .progress {
+        opacity: 0.8;
+        margin-bottom: 20px;
+      }
 
-.question{
-font-size:24px;
-margin-bottom:20px;
-}
+      .question {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
 
-.answers{
-display:grid;
-gap:12px;
-}
+      .answers {
+        display: grid;
+        gap: 12px;
+      }
 
-.answers button{
-padding:14px;
-border:none;
-border-radius:14px;
-cursor:pointer;
-font-size:16px;
-background:#1d2348;
-color:#fff;
-transition:.2s;
-}
+      .answers button {
+        padding: 14px;
+        border: none;
+        border-radius: 14px;
+        cursor: pointer;
+        font-size: 16px;
+        background: #1d2348;
+        color: #fff;
+        transition: 0.2s;
+      }
 
-.answers button:hover{
-transform:translateY(-2px);
-}
+      .answers button:hover {
+        transform: translateY(-2px);
+      }
 
-.answers button.selected{
-background:#5e72eb;
-}
+      .answers button.selected {
+        background: #5e72eb;
+      }
 
-.nav{
-margin-top:25px;
-display:flex;
-justify-content:space-between;
-gap:10px;
-}
+      .nav {
+        margin-top: 25px;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+      }
 
-.nav button{
-padding:12px 18px;
-border:none;
-border-radius:14px;
-cursor:pointer;
-background:#5e72eb;
-color:#fff;
-font-size:16px;
-}
+      .nav button {
+        padding: 12px 18px;
+        border: none;
+        border-radius: 14px;
+        cursor: pointer;
+        background: #5e72eb;
+        color: #fff;
+        font-size: 16px;
+      }
 
-.result{
-text-align:center;
-font-size:24px;
-line-height:1.8;
-}
+      .result {
+        text-align: center;
+        font-size: 24px;
+        line-height: 1.8;
+      }
 
-.brand{
-position:absolute;
-top:18px;
-left:24px;
-z-index:10;
-text-decoration:none;
-color:#fff;
-font-size:28px;
-font-weight:700;
-letter-spacing:.5px;
-transition:.2s;
-}
+      .brand {
+        position: absolute;
+        top: 18px;
+        left: 24px;
+        z-index: 10;
+        text-decoration: none;
+        color: #fff;
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        transition: 0.2s;
+      }
 
-.brand:hover{
-transform:translateY(-2px);
-opacity:.9;
-}
+      .brand:hover {
+        transform: translateY(-2px);
+        opacity: 0.9;
+      }
 
-@media (max-width:768px){
+      .view {
+        min-height: 100vh;
+        padding-top: 90px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+      }
 
-body{
-display:block;
-padding:12px;
-overflow:auto;
-}
+      @media (max-width: 768px) {
+        body {
+          display: block;
+          padding: 12px;
+          overflow: auto;
+        }
 
-.brand{
-position:static;
-display:block;
-font-size:32px;
-margin-bottom:10px;
-}
+        .brand {
+          position: static;
+          display: block;
+          font-size: 44px;
+          margin-bottom: 14px;
+        }
 
-.top-right{
-position:static;
-display:flex;
-gap:10px;
-margin-bottom:12px;
-}
+        .top-right {
+          position: static;
+          display: flex;
+          gap: 10px;
+          margin-bottom: 12px;
+        }
 
-.nav-top{
-flex:1;
-min-width:0;
-height:42px;
-font-size:15px;
-}
+        .nav-top {
+          flex: 1;
+          min-width: 0;
+          height: 42px;
+          font-size: 15px;
+        }
 
-.card{
-max-width:none;
-width:100%;
-padding:20px;
-border-radius:22px;
-}
+        .card {
+          max-width: none;
+          width: 100%;
+          padding: 24px;
+          border-radius: 26px;
+          margin: 0;
+        }
 
-h1{
-font-size:26px;
-}
+        h1 {
+          font-size: 26px;
+        }
 
-.progress{
-font-size:16px;
-margin-bottom:14px;
-}
+        .progress {
+          font-size: 16px;
+          margin-bottom: 14px;
+        }
 
-.question{
-font-size:30px;
-line-height:1.35;
-}
+        .question {
+          font-size: 24px;
+          line-height: 1.4;
+          margin-bottom: 18px;
+        }
 
-.answers button{
-font-size:20px;
-padding:18px;
-border-radius:16px;
-}
+        .answers button {
+          font-size: 18px;
+          padding: 16px;
+          border-radius: 18px;
+        }
 
-.nav{
-flex-direction:column;
-}
+        .nav {
+          flex-direction: column;
+          gap: 12px;
+          margin-top: 18px;
+        }
 
-.nav button{
-width:100%;
-font-size:18px;
-padding:16px;
-}
-}
-</style>
-</head>
-<body>
+        .nav button {
+          width: 100%;
+          font-size: 18px;
+          padding: 16px;
+        }
 
-<a href="index.html" class="brand">✦StarZ✦</a>
+        .view {
+          min-height: auto;
+          padding-top: 0;
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="index.html" class="brand">✦StarZ✦</a>
 
-<div class="top-right">
-<a href="course.html" class="nav-top">Course</a>
-<a href="quiz.html" class="nav-top active">Quiz</a>
-</div>
+    <div class="top-right">
+      <a href="course.html" class="nav-top">Course</a>
+      <a href="quiz.html" class="nav-top active">Quiz</a>
+    </div>
+    <section class="view">
+      <div class="card" id="app"></div>
+    </section>
+    <script>
+      const quiz = [
+        {
+          q: "อวกาศหมายถึงบริเวณใด?",
+          a: [
+            "บริเวณนอกชั้นบรรยากาศโลก",
+            "บริเวณใต้เปลือกโลก",
+            "บริเวณชั้นหินหนืด",
+            "บริเวณแก่นโลก",
+          ],
+          c: 0,
+        },
+        {
+          q: "สภาพของอวกาศใกล้เคียงข้อใดมากที่สุด?",
+          a: ["สุญญากาศ", "ของเหลว", "บรรยากาศหนาแน่น", "ไอน้ำร้อน"],
+          c: 0,
+        },
+        {
+          q: "เหตุใดเสียงจึงเดินทางในอวกาศได้ยาก?",
+          a: [
+            "ไม่มีตัวกลางเพียงพอ",
+            "ไม่มีแรงโน้มถ่วง",
+            "มีแสงน้อยเกินไป",
+            "มีอุณหภูมิสูงเกินไป",
+          ],
+          c: 0,
+        },
+        {
+          q: "มนุษย์จำเป็นต้องใช้อุปกรณ์ใดเมื่อปฏิบัติงานในอวกาศ?",
+          a: ["ชุดอวกาศ", "เสื้อชูชีพ", "หน้ากากดำน้ำ", "เสื้อกันฝน"],
+          c: 0,
+        },
 
-<div class="card" id="app"></div>
+        {
+          q: "เอกภพหมายถึงข้อใด?",
+          a: [
+            "เฉพาะโลกและดวงจันทร์",
+            "ทุกสิ่งทุกอย่างที่มีอยู่",
+            "เฉพาะระบบสุริยะ",
+            "เฉพาะกาแล็กซี",
+          ],
+          c: 1,
+        },
+        {
+          q: "ทฤษฎีที่ได้รับการยอมรับในการอธิบายกำเนิดเอกภพคือข้อใด?",
+          a: [
+            "ทฤษฎีบิกแบง",
+            "ทฤษฎีโลกแบน",
+            "ทฤษฎีแรงดันโลก",
+            "ทฤษฎีดวงอาทิตย์คงที่",
+          ],
+          c: 0,
+        },
+        {
+          q: "หลักฐานสำคัญที่สนับสนุนทฤษฎีบิกแบงคือข้อใด?",
+          a: [
+            "การขยายตัวของเอกภพ",
+            "โลกหมุนรอบตัวเอง",
+            "ดวงจันทร์โคจรรอบโลก",
+            "ฤดูกาลเปลี่ยนแปลง",
+          ],
+          c: 0,
+        },
+        {
+          q: "อายุของเอกภพในปัจจุบันประมาณเท่าใด?",
+          a: ["4,600 ล้านปี", "13,800 ล้านปี", "1 ล้านปี", "100 ล้านปี"],
+          c: 1,
+        },
 
-<script>
-const quiz = [
+        {
+          q: "กาแล็กซีคืออะไร?",
+          a: [
+            "ระบบที่ประกอบด้วยดาวฤกษ์ เนบิวลา และสสารระหว่างดาว",
+            "ดาวเคราะห์ขนาดใหญ่",
+            "กลุ่มดาวที่มองเห็นจากโลกเท่านั้น",
+            "หลุมดำขนาดยักษ์",
+          ],
+          c: 0,
+        },
+        {
+          q: "ระบบสุริยะอยู่ในกาแล็กซีใด?",
+          a: ["แอนโดรเมดา", "ทางช้างเผือก", "แมกเจลแลนใหญ่", "สามเหลี่ยม"],
+          c: 1,
+        },
+        {
+          q: "กาแล็กซีทางช้างเผือกจัดเป็นกาแล็กซีชนิดใด?",
+          a: ["กังหันมีคาน", "วงรี", "ไร้รูปแบบ", "ทรงกลม"],
+          c: 0,
+        },
+        {
+          q: "เมื่อมองจากโลก ทางช้างเผือกมีลักษณะอย่างไร?",
+          a: [
+            "แถบฝ้าสีขาวจางพาดบนท้องฟ้า",
+            "วงแหวนสีแดงรอบโลก",
+            "จุดสว่างดวงเดียว",
+            "เมฆดำทึบ",
+          ],
+          c: 0,
+        },
 
-{q:"อวกาศหมายถึงบริเวณใด?",a:["บริเวณนอกชั้นบรรยากาศโลก","บริเวณใต้เปลือกโลก","บริเวณชั้นหินหนืด","บริเวณแก่นโลก"],c:0},
-{q:"สภาพของอวกาศใกล้เคียงข้อใดมากที่สุด?",a:["สุญญากาศ","ของเหลว","บรรยากาศหนาแน่น","ไอน้ำร้อน"],c:0},
-{q:"เหตุใดเสียงจึงเดินทางในอวกาศได้ยาก?",a:["ไม่มีตัวกลางเพียงพอ","ไม่มีแรงโน้มถ่วง","มีแสงน้อยเกินไป","มีอุณหภูมิสูงเกินไป"],c:0},
-{q:"มนุษย์จำเป็นต้องใช้อุปกรณ์ใดเมื่อปฏิบัติงานในอวกาศ?",a:["ชุดอวกาศ","เสื้อชูชีพ","หน้ากากดำน้ำ","เสื้อกันฝน"],c:0},
+        {
+          q: "ระบบสุริยะมีวัตถุใดเป็นศูนย์กลาง?",
+          a: ["โลก", "ดวงอาทิตย์", "ดาวพฤหัสบดี", "ดวงจันทร์"],
+          c: 1,
+        },
+        {
+          q: "ระบบสุริยะเกิดขึ้นเมื่อประมาณเท่าใด?",
+          a: ["13,800 ล้านปี", "4,600 ล้านปี", "500 ล้านปี", "10,000 ปี"],
+          c: 1,
+        },
+        {
+          q: "ดาวเคราะห์ในระบบสุริยะมีทั้งหมดกี่ดวง?",
+          a: ["7 ดวง", "8 ดวง", "9 ดวง", "10 ดวง"],
+          c: 1,
+        },
+        {
+          q: "ข้อใดเป็นสมาชิกของระบบสุริยะ?",
+          a: ["ดาวหาง", "กาแล็กซีอื่น", "เนบิวลาทุกแห่ง", "กระจุกกาแล็กซี"],
+          c: 0,
+        },
 
-{q:"เอกภพหมายถึงข้อใด?",a:["เฉพาะโลกและดวงจันทร์","ทุกสิ่งทุกอย่างที่มีอยู่","เฉพาะระบบสุริยะ","เฉพาะกาแล็กซี"],c:1},
-{q:"ทฤษฎีที่ได้รับการยอมรับในการอธิบายกำเนิดเอกภพคือข้อใด?",a:["ทฤษฎีบิกแบง","ทฤษฎีโลกแบน","ทฤษฎีแรงดันโลก","ทฤษฎีดวงอาทิตย์คงที่"],c:0},
-{q:"หลักฐานสำคัญที่สนับสนุนทฤษฎีบิกแบงคือข้อใด?",a:["การขยายตัวของเอกภพ","โลกหมุนรอบตัวเอง","ดวงจันทร์โคจรรอบโลก","ฤดูกาลเปลี่ยนแปลง"],c:0},
-{q:"อายุของเอกภพในปัจจุบันประมาณเท่าใด?",a:["4,600 ล้านปี","13,800 ล้านปี","1 ล้านปี","100 ล้านปี"],c:1},
+        {
+          q: "ดาวเคราะห์ดวงใดอยู่ใกล้ดวงอาทิตย์มากที่สุด?",
+          a: ["ดาวศุกร์", "ดาวพุธ", "โลก", "ดาวอังคาร"],
+          c: 1,
+        },
+        {
+          q: "ดาวเคราะห์ดวงใดมีขนาดใหญ่ที่สุดในระบบสุริยะ?",
+          a: ["ดาวเสาร์", "ดาวพฤหัสบดี", "ดาวยูเรนัส", "โลก"],
+          c: 1,
+        },
+        {
+          q: "ดาวเคราะห์สีแดงคือข้อใด?",
+          a: ["ดาวพุธ", "ดาวอังคาร", "ดาวศุกร์", "ดาวเนปจูน"],
+          c: 1,
+        },
+        {
+          q: "โลกเป็นดาวเคราะห์ลำดับที่เท่าใดจากดวงอาทิตย์?",
+          a: ["ลำดับที่ 2", "ลำดับที่ 3", "ลำดับที่ 4", "ลำดับที่ 5"],
+          c: 1,
+        },
 
-{q:"กาแล็กซีคืออะไร?",a:["ระบบที่ประกอบด้วยดาวฤกษ์ เนบิวลา และสสารระหว่างดาว","ดาวเคราะห์ขนาดใหญ่","กลุ่มดาวที่มองเห็นจากโลกเท่านั้น","หลุมดำขนาดยักษ์"],c:0},
-{q:"ระบบสุริยะอยู่ในกาแล็กซีใด?",a:["แอนโดรเมดา","ทางช้างเผือก","แมกเจลแลนใหญ่","สามเหลี่ยม"],c:1},
-{q:"กาแล็กซีทางช้างเผือกจัดเป็นกาแล็กซีชนิดใด?",a:["กังหันมีคาน","วงรี","ไร้รูปแบบ","ทรงกลม"],c:0},
-{q:"เมื่อมองจากโลก ทางช้างเผือกมีลักษณะอย่างไร?",a:["แถบฝ้าสีขาวจางพาดบนท้องฟ้า","วงแหวนสีแดงรอบโลก","จุดสว่างดวงเดียว","เมฆดำทึบ"],c:0},
+        {
+          q: "ดาวเคราะห์ดวงใดมีวงแหวนเด่นชัดที่สุด?",
+          a: ["ดาวเสาร์", "ดาวอังคาร", "โลก", "ดาวพุธ"],
+          c: 0,
+        },
+        {
+          q: "ข้อใดเป็นดาวเคราะห์ชั้นใน?",
+          a: ["โลก", "ดาวพฤหัสบดี", "ดาวเสาร์", "ดาวเนปจูน"],
+          c: 0,
+        },
+        {
+          q: "ข้อใดเป็นดาวเคราะห์ชั้นนอก?",
+          a: ["ดาวศุกร์", "ดาวอังคาร", "ดาวพฤหัสบดี", "โลก"],
+          c: 2,
+        },
+        {
+          q: "ดาวเคราะห์ชั้นนอกส่วนใหญ่มีลักษณะอย่างไร?",
+          a: [
+            "เป็นดาวเคราะห์แก๊สหรือยักษ์น้ำแข็ง",
+            "เป็นดาวเคราะห์หินทั้งหมด",
+            "ไม่มีดวงจันทร์",
+            "ไม่มีแรงโน้มถ่วง",
+          ],
+          c: 0,
+        },
 
-{q:"ระบบสุริยะมีวัตถุใดเป็นศูนย์กลาง?",a:["โลก","ดวงอาทิตย์","ดาวพฤหัสบดี","ดวงจันทร์"],c:1},
-{q:"ระบบสุริยะเกิดขึ้นเมื่อประมาณเท่าใด?",a:["13,800 ล้านปี","4,600 ล้านปี","500 ล้านปี","10,000 ปี"],c:1},
-{q:"ดาวเคราะห์ในระบบสุริยะมีทั้งหมดกี่ดวง?",a:["7 ดวง","8 ดวง","9 ดวง","10 ดวง"],c:1},
-{q:"ข้อใดเป็นสมาชิกของระบบสุริยะ?",a:["ดาวหาง","กาแล็กซีอื่น","เนบิวลาทุกแห่ง","กระจุกกาแล็กซี"],c:0},
+        {
+          q: "ดวงอาทิตย์จัดเป็นวัตถุประเภทใด?",
+          a: ["ดาวเคราะห์", "ดาวฤกษ์", "ดาวเคราะห์แคระ", "เนบิวลา"],
+          c: 1,
+        },
+        {
+          q: "ดาวฤกษ์แตกต่างจากดาวเคราะห์อย่างไร?",
+          a: [
+            "ดาวฤกษ์เปล่งพลังงานได้เอง",
+            "ดาวฤกษ์ไม่มีมวล",
+            "ดาวฤกษ์ไม่มีแรงโน้มถ่วง",
+            "ดาวฤกษ์โคจรรอบโลก",
+          ],
+          c: 0,
+        },
+        {
+          q: "พลังงานของดาวฤกษ์เกิดจากกระบวนการใด?",
+          a: [
+            "นิวเคลียร์ฟิวชัน",
+            "การเผาไหม้ถ่านหิน",
+            "การสะท้อนแสง",
+            "แรงเสียดทาน",
+          ],
+          c: 0,
+        },
+        {
+          q: "สีของดาวฤกษ์สัมพันธ์กับสิ่งใดมากที่สุด?",
+          a: [
+            "อุณหภูมิผิว",
+            "จำนวนดวงจันทร์",
+            "ขนาดของวงโคจร",
+            "ระยะห่างจากโลก",
+          ],
+          c: 0,
+        },
 
-{q:"ดาวเคราะห์ดวงใดอยู่ใกล้ดวงอาทิตย์มากที่สุด?",a:["ดาวศุกร์","ดาวพุธ","โลก","ดาวอังคาร"],c:1},
-{q:"ดาวเคราะห์ดวงใดมีขนาดใหญ่ที่สุดในระบบสุริยะ?",a:["ดาวเสาร์","ดาวพฤหัสบดี","ดาวยูเรนัส","โลก"],c:1},
-{q:"ดาวเคราะห์สีแดงคือข้อใด?",a:["ดาวพุธ","ดาวอังคาร","ดาวศุกร์","ดาวเนปจูน"],c:1},
-{q:"โลกเป็นดาวเคราะห์ลำดับที่เท่าใดจากดวงอาทิตย์?",a:["ลำดับที่ 2","ลำดับที่ 3","ลำดับที่ 4","ลำดับที่ 5"],c:1},
+        {
+          q: "เนบิวลาคืออะไร?",
+          a: [
+            "กลุ่มก๊าซและฝุ่นในอวกาศ",
+            "ดาวเคราะห์เกิดใหม่",
+            "หลุมดำขนาดเล็ก",
+            "ชั้นบรรยากาศโลก",
+          ],
+          c: 0,
+        },
+        {
+          q: "เนบิวลามีความสำคัญอย่างไร?",
+          a: [
+            "เป็นแหล่งกำเนิดดาวฤกษ์",
+            "เป็นศูนย์กลางทุกกาแล็กซี",
+            "เป็นแหล่งกำเนิดมหาสมุทร",
+            "เป็นต้นกำเนิดแรงโน้มถ่วงโลก",
+          ],
+          c: 0,
+        },
+        {
+          q: "โปรโตสตาร์หมายถึงข้อใด?",
+          a: [
+            "ดาวฤกษ์ก่อนเข้าสู่ระยะสมบูรณ์",
+            "ดาวฤกษ์ที่ดับแล้ว",
+            "ดาวเคราะห์แคระ",
+            "ดาวคู่",
+          ],
+          c: 0,
+        },
+        {
+          q: "ดวงอาทิตย์อยู่ในช่วงใดของวงจรชีวิตดาวฤกษ์?",
+          a: ["ดาวฤกษ์ลำดับหลัก", "ดาวยักษ์แดง", "ดาวแคระขาว", "ซูเปอร์โนวา"],
+          c: 0,
+        },
 
-{q:"ดาวเคราะห์ดวงใดมีวงแหวนเด่นชัดที่สุด?",a:["ดาวเสาร์","ดาวอังคาร","โลก","ดาวพุธ"],c:0},
-{q:"ข้อใดเป็นดาวเคราะห์ชั้นใน?",a:["โลก","ดาวพฤหัสบดี","ดาวเสาร์","ดาวเนปจูน"],c:0},
-{q:"ข้อใดเป็นดาวเคราะห์ชั้นนอก?",a:["ดาวศุกร์","ดาวอังคาร","ดาวพฤหัสบดี","โลก"],c:2},
-{q:"ดาวเคราะห์ชั้นนอกส่วนใหญ่มีลักษณะอย่างไร?",a:["เป็นดาวเคราะห์แก๊สหรือยักษ์น้ำแข็ง","เป็นดาวเคราะห์หินทั้งหมด","ไม่มีดวงจันทร์","ไม่มีแรงโน้มถ่วง"],c:0},
+        {
+          q: "หลุมดำคืออะไร?",
+          a: [
+            "วัตถุที่มีแรงโน้มถ่วงสูงมาก",
+            "โพรงอากาศในอวกาศ",
+            "ดาวเคราะห์ที่ไร้แสง",
+            "กลุ่มฝุ่นเย็น",
+          ],
+          c: 0,
+        },
+        {
+          q: "บริเวณรอบหลุมดำที่แม้แสงก็หลุดออกมาไม่ได้เรียกว่าอะไร?",
+          a: ["ขอบฟ้าเหตุการณ์", "ชั้นโอโซน", "เขตวงแหวน", "แกนกาแล็กซี"],
+          c: 0,
+        },
+        {
+          q: "หลุมดำจำนวนมากเกิดจากเหตุการณ์ใด?",
+          a: [
+            "ดาวฤกษ์มวลมากยุบตัว",
+            "ดาวหางละลาย",
+            "โลกชนดวงจันทร์",
+            "เนบิวลาหายไป",
+          ],
+          c: 0,
+        },
+        {
+          q: "นักวิทยาศาสตร์มักศึกษาหลุมดำจากสิ่งใด?",
+          a: [
+            "ผลกระทบต่อวัตถุรอบข้าง",
+            "การมองเห็นพื้นผิวโดยตรง",
+            "เสียงระเบิด",
+            "สีของพื้นผิว",
+          ],
+          c: 0,
+        },
 
-{q:"ดวงอาทิตย์จัดเป็นวัตถุประเภทใด?",a:["ดาวเคราะห์","ดาวฤกษ์","ดาวเคราะห์แคระ","เนบิวลา"],c:1},
-{q:"ดาวฤกษ์แตกต่างจากดาวเคราะห์อย่างไร?",a:["ดาวฤกษ์เปล่งพลังงานได้เอง","ดาวฤกษ์ไม่มีมวล","ดาวฤกษ์ไม่มีแรงโน้มถ่วง","ดาวฤกษ์โคจรรอบโลก"],c:0},
-{q:"พลังงานของดาวฤกษ์เกิดจากกระบวนการใด?",a:["นิวเคลียร์ฟิวชัน","การเผาไหม้ถ่านหิน","การสะท้อนแสง","แรงเสียดทาน"],c:0},
-{q:"สีของดาวฤกษ์สัมพันธ์กับสิ่งใดมากที่สุด?",a:["อุณหภูมิผิว","จำนวนดวงจันทร์","ขนาดของวงโคจร","ระยะห่างจากโลก"],c:0},
+        {
+          q: "ข้อใดเป็นประโยชน์สำคัญของดาวเทียม?",
+          a: [
+            "การสื่อสารและพยากรณ์อากาศ",
+            "เพิ่มออกซิเจนให้โลก",
+            "สร้างภูเขาไฟ",
+            "เพิ่มแรงโน้มถ่วงโลก",
+          ],
+          c: 0,
+        },
+        {
+          q: "พาหนะที่ใช้ส่งวัตถุสู่อวกาศคืออะไร?",
+          a: ["จรวด", "เรือดำน้ำ", "รถไฟ", "บอลลูนอากาศร้อน"],
+          c: 0,
+        },
+        {
+          q: "ISS ย่อมาจากข้อใด?",
+          a: [
+            "สถานีอวกาศนานาชาติ",
+            "ระบบดาวเทียมสากล",
+            "ศูนย์สำรวจสุริยะ",
+            "ยานอวกาศอัจฉริยะ",
+          ],
+          c: 0,
+        },
+        {
+          q: "นักบินอวกาศคือบุคคลประเภทใด?",
+          a: [
+            "ผู้ได้รับการฝึกเพื่อปฏิบัติงานในอวกาศ",
+            "ผู้ควบคุมสภาพอากาศ",
+            "ผู้สร้างดาวเทียมเท่านั้น",
+            "ผู้ศึกษาแร่ใต้ดิน",
+          ],
+          c: 0,
+        },
+      ];
 
-{q:"เนบิวลาคืออะไร?",a:["กลุ่มก๊าซและฝุ่นในอวกาศ","ดาวเคราะห์เกิดใหม่","หลุมดำขนาดเล็ก","ชั้นบรรยากาศโลก"],c:0},
-{q:"เนบิวลามีความสำคัญอย่างไร?",a:["เป็นแหล่งกำเนิดดาวฤกษ์","เป็นศูนย์กลางทุกกาแล็กซี","เป็นแหล่งกำเนิดมหาสมุทร","เป็นต้นกำเนิดแรงโน้มถ่วงโลก"],c:0},
-{q:"โปรโตสตาร์หมายถึงข้อใด?",a:["ดาวฤกษ์ก่อนเข้าสู่ระยะสมบูรณ์","ดาวฤกษ์ที่ดับแล้ว","ดาวเคราะห์แคระ","ดาวคู่"],c:0},
-{q:"ดวงอาทิตย์อยู่ในช่วงใดของวงจรชีวิตดาวฤกษ์?",a:["ดาวฤกษ์ลำดับหลัก","ดาวยักษ์แดง","ดาวแคระขาว","ซูเปอร์โนวา"],c:0},
+      let current = 0;
+      let userAns = new Array(quiz.length).fill(null);
 
-{q:"หลุมดำคืออะไร?",a:["วัตถุที่มีแรงโน้มถ่วงสูงมาก","โพรงอากาศในอวกาศ","ดาวเคราะห์ที่ไร้แสง","กลุ่มฝุ่นเย็น"],c:0},
-{q:"บริเวณรอบหลุมดำที่แม้แสงก็หลุดออกมาไม่ได้เรียกว่าอะไร?",a:["ขอบฟ้าเหตุการณ์","ชั้นโอโซน","เขตวงแหวน","แกนกาแล็กซี"],c:0},
-{q:"หลุมดำจำนวนมากเกิดจากเหตุการณ์ใด?",a:["ดาวฤกษ์มวลมากยุบตัว","ดาวหางละลาย","โลกชนดวงจันทร์","เนบิวลาหายไป"],c:0},
-{q:"นักวิทยาศาสตร์มักศึกษาหลุมดำจากสิ่งใด?",a:["ผลกระทบต่อวัตถุรอบข้าง","การมองเห็นพื้นผิวโดยตรง","เสียงระเบิด","สีของพื้นผิว"],c:0},
+      function render() {
+        const app = document.getElementById("app");
 
-{q:"ข้อใดเป็นประโยชน์สำคัญของดาวเทียม?",a:["การสื่อสารและพยากรณ์อากาศ","เพิ่มออกซิเจนให้โลก","สร้างภูเขาไฟ","เพิ่มแรงโน้มถ่วงโลก"],c:0},
-{q:"พาหนะที่ใช้ส่งวัตถุสู่อวกาศคืออะไร?",a:["จรวด","เรือดำน้ำ","รถไฟ","บอลลูนอากาศร้อน"],c:0},
-{q:"ISS ย่อมาจากข้อใด?",a:["สถานีอวกาศนานาชาติ","ระบบดาวเทียมสากล","ศูนย์สำรวจสุริยะ","ยานอวกาศอัจฉริยะ"],c:0},
-{q:"นักบินอวกาศคือบุคคลประเภทใด?",a:["ผู้ได้รับการฝึกเพื่อปฏิบัติงานในอวกาศ","ผู้ควบคุมสภาพอากาศ","ผู้สร้างดาวเทียมเท่านั้น","ผู้ศึกษาแร่ใต้ดิน"],c:0}
+        if (current === quiz.length) {
+          let score = 0;
+          for (let i = 0; i < quiz.length; i++) {
+            if (userAns[i] === quiz[i].c) score++;
+          }
 
-];
-
-let current=0;
-let userAns=new Array(quiz.length).fill(null);
-
-function render(){
-const app=document.getElementById("app");
-
-if(current===quiz.length){
-let score=0;
-for(let i=0;i<quiz.length;i++){
-if(userAns[i]===quiz[i].c) score++;
-}
-
-app.innerHTML=`
+          app.innerHTML = `
 <div class="result">
 <h1>✨ เสร็จแล้ว ✨</h1>
 คะแนน ${score} / ${quiz.length}<br>
 ${
-score<=10 ? "เริ่มต้นได้ดี ยังไปต่อได้อีก 🚀" :
-score<=20 ? "มาถูกทางแล้ว พยายามต่อนะ 🌟" :
-score<=30 ? "เก่งมาก ความรู้แน่นขึ้นแล้ว 🔥" :
-"สุดยอดมาก ทำได้ดีเยี่ยม 👑"
+  score <= 10
+    ? "เริ่มต้นได้ดี ยังไปต่อได้อีก 🚀"
+    : score <= 20
+      ? "มาถูกทางแล้ว พยายามต่อนะ 🌟"
+      : score <= 30
+        ? "เก่งมาก ความรู้แน่นขึ้นแล้ว 🔥"
+        : "สุดยอดมาก ทำได้ดีเยี่ยม 👑"
 }<br><br>
 <a href="course.html" style="color:#8ea2ff">กลับไปเรียน</a>
 </div>
 `;
-return;
-}
+          return;
+        }
 
-const item=quiz[current];
+        const item = quiz[current];
 
-app.innerHTML=`
+        app.innerHTML = `
 <h1>StarZ Quiz</h1>
-<div class="progress">ข้อ ${current+1} / ${quiz.length}</div>
+<div class="progress">ข้อ ${current + 1} / ${quiz.length}</div>
 <div class="question">${item.q}</div>
 
 <div class="answers">
-${item.a.map((choice,i)=>
-`<button class="${userAns[current]===i?'selected':''}"
-onclick="selectAns(${i})">${choice}</button>`
-).join("")}
+${item.a
+  .map(
+    (choice, i) =>
+      `<button class="${userAns[current] === i ? "selected" : ""}"
+onclick="selectAns(${i})">${choice}</button>`,
+  )
+  .join("")}
 </div>
 
 <div class="nav">
@@ -340,24 +645,24 @@ onclick="selectAns(${i})">${choice}</button>`
 <button onclick="nextQ()">ถัดไป</button>
 </div>
 `;
-}
+      }
 
-function selectAns(i){
-userAns[current]=i;
-render();
-}
+      function selectAns(i) {
+        userAns[current] = i;
+        render();
+      }
 
-function nextQ(){
-current++;
-render();
-}
+      function nextQ() {
+        current++;
+        render();
+      }
 
-function prevQ(){
-if(current>0) current--;
-render();
-}
+      function prevQ() {
+        if (current > 0) current--;
+        render();
+      }
 
-render();
-</script>
-</body>
+      render();
+    </script>
+  </body>
 </html>
